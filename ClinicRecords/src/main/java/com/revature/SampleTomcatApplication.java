@@ -1,4 +1,4 @@
-/*
+package com.revature;/*
  * Copyright 2012-2013 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,8 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package com.sherlockHomies.tomcat;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

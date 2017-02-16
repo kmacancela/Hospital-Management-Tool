@@ -1,6 +1,6 @@
 package com.revature.controllers;
 
-import com.revature.service.UserMongoService;
+import com.revature.service.UserService;
 import com.revature.beans.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -14,10 +14,10 @@ import java.util.List;
 @RestController
 public class UserController {
 
-    private UserMongoService userService;
+    private UserService userService;
 
     @Autowired
-    public void setUserService(UserMongoService userService) {
+    public void setUserService(UserService userService) {
         this.userService = userService;
     }
 
@@ -35,7 +35,7 @@ public class UserController {
         return userService.findAll();
     }
 
-    @RequestMapping(value = "/get/{id}",
+    @RequestMapping(value = "/search/{id}",
                     method = RequestMethod.GET,
                     produces = MediaType.APPLICATION_JSON_VALUE)
     public User getUserById(@PathVariable int id) {

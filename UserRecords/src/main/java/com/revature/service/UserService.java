@@ -11,7 +11,7 @@ import java.util.List;
  * Created by Sibrian on 2/15/17.
  */
 @Service
-public class UserMongoService {
+public class UserService {
 
     private UserRepository userRepo;
 
