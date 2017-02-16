@@ -1,4 +1,4 @@
-package com.revature.tomcat.service;
+package com.revature.service;
 
 import java.util.List;
 

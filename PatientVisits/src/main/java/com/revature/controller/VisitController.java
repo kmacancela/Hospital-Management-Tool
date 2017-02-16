@@ -1,4 +1,4 @@
-package com.revature.tomcat.web;
+package com.revature.controller;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Visit;
-import com.revature.tomcat.service.VisitMongoService;
+import com.revature.service.VisitMongoService;
 
 @RestController
 public class VisitController {

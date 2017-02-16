@@ -1,7 +1,8 @@
-package com.revature.tomcat.web;
+package com.revature.controller;
 
 import java.util.List;
 
+import com.revature.service.PrescriptionMongoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Prescription;
-import com.revature.tomcat.service.PrescriptionMongoService;
 
 @RestController
 public class PrescriptionController {
@@ -24,7 +24,6 @@ public class PrescriptionController {
 	public void setService(PrescriptionMongoService service) {
 		this.service = service;
 	}
-	
 	
 	@RequestMapping(value="/prescription/id/{prescriptionId}", method=RequestMethod.GET,
 			produces=MediaType.APPLICATION_JSON_VALUE)

@@ -1,12 +1,11 @@
-package com.revature.tomcat.service;
-
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+package com.revature.service;
 
 import com.revature.beans.Prescription;
 import com.revature.data.PrescriptionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PrescriptionMongoService {

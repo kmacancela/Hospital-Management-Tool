@@ -35,14 +35,14 @@ public class UserController {
         return userService.findAll();
     }
 
-    @RequestMapping(value = "/search/{id}",
+    @RequestMapping(value = "/search/id/{id}",
                     method = RequestMethod.GET,
                     produces = MediaType.APPLICATION_JSON_VALUE)
     public User getUserById(@PathVariable int id) {
         return userService.findOne(id);
     }
 
-    @RequestMapping(value = "/search/{lName}",
+    @RequestMapping(value = "/search/name/{lName}",
                     method = RequestMethod.GET,
                     produces = MediaType.APPLICATION_JSON_VALUE)
     public User findByLastName(@PathVariable String lName) {

@@ -1,3 +1,5 @@
+package com.revature;
+
 /*
  * Copyright 2012-2013 the original author or authors.
  *
@@ -14,8 +16,6 @@
  * limitations under the License.
  */
 
-package com.revature.tomcat;
-
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
@@ -30,12 +30,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan
-public class SampleTomcatApplication {
+public class ClinicApplication {
 
-	private static Log logger = LogFactory.getLog(SampleTomcatApplication.class);
+	private static Log logger = LogFactory.getLog(ClinicApplication.class);
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(SampleTomcatApplication.class, args);
+		SpringApplication.run(ClinicApplication.class, args);
 	}
 
 	@Bean

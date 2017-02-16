@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.revature.tomcat;
+package com.revature;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -30,27 +30,26 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan
-public class SampleTomcatApplication {
+public class PatientVisitApplication {
 
-	private static Log logger = LogFactory.getLog(SampleTomcatApplication.class);
+    private static Log logger = LogFactory.getLog(PatientVisitApplication.class);
 
-	public static void main(String[] args) throws Exception {
-		SpringApplication.run(SampleTomcatApplication.class, args);
-	}
+    public static void main(String[] args) throws Exception {
+        SpringApplication.run(PatientVisitApplication.class, args);
+    }
 
-	@Bean
-	protected ServletContextListener listener() {
-		return new ServletContextListener() {
-			@Override
-			public void contextInitialized(ServletContextEvent sce) {
-				logger.info("ServletContext initialized");
-			}
+    @Bean
+    protected ServletContextListener listener() {
+        return new ServletContextListener() {
+            @Override
+            public void contextInitialized(ServletContextEvent sce) {
+                logger.info("ServletContext initialized");
+            }
 
-			@Override
-			public void contextDestroyed(ServletContextEvent sce) {
-				logger.info("ServletContext destroyed");
-			}
-		};
-	}
-
+            @Override
+            public void contextDestroyed(ServletContextEvent sce) {
+                logger.info("ServletContext destroyed");
+            }
+        };
+    }
 }

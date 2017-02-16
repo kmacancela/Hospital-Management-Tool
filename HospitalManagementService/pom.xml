@@ -9,7 +9,7 @@
 	</parent>
 	<artifactId>HospitalManagementService</artifactId>
 	<groupId>com.sherlockHomies</groupId>
-	<name>Hospital Management Service</name>
+	<name>Hospital Management com.revature.service.Service</name>
 	<description>Spring Boot Tomcat Sample</description>
 	<version>1.0-SNAPSHOT</version>
 	<url>http://projects.spring.io/spring-boot/</url>
