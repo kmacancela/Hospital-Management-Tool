@@ -10,15 +10,11 @@ import java.util.List;
  */
 public interface MedicineRepository extends MongoRepository<Medicine, Integer> {
 
-    // Create
-    @Override
     <S extends Medicine> S save(S medicine);
-    // Retrieve all
-    @Override
+
     List<Medicine> findAll();
-    // Retrieve by Id
-    @Override
+
     Medicine findOne(Integer id);
-    // update by Id
+
     <S extends Medicine> S update(S medicine);
 }

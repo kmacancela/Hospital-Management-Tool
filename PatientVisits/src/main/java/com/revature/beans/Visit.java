@@ -1,4 +1,4 @@
-package com.revature.tomcat.beans;
+package com.revature.beans;
 
 import org.springframework.data.annotation.Id;
 

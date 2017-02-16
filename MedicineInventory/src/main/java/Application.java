@@ -27,13 +27,13 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan
-public class SampleTomcatApplication {
+@ComponentScan(basePackages="com.revature")
+public class Application {
 
-	private static Log logger = LogFactory.getLog(SampleTomcatApplication.class);
+	private static Log logger = LogFactory.getLog(Application.class);
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(SampleTomcatApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 	@Bean

@@ -1,7 +1,7 @@
 package com.revature.controller;
 
-import com.revature.beans.Medicine;
-import com.revature.service.MedicineService;
+import com.revature.beans.Inventory;
+import com.revature.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Created by kawee on 2/15/2017.
+ * Created by kawee on 2/16/2017.
  */
 
 @RestController
-@RequestMapping(value = "/medicine")
-public class MedicineController {
+@RequestMapping(value = "/inventory")
+public class InventoryController {
 
-    private MedicineService service;
+    private InventoryService service;
 
     @Autowired
-    public void setService(MedicineService service) {
+    public void setService(InventoryService service) {
         this.service = service;
     }
 
@@ -27,26 +27,28 @@ public class MedicineController {
                     method = RequestMethod.POST,
                     consumes = MediaType.APPLICATION_JSON_VALUE,
                     produces = MediaType.APPLICATION_JSON_VALUE)
-    public Medicine save(@RequestBody Medicine medicine){
-        return service.save(medicine);
+    public Inventory save(@RequestBody Inventory inventoryItem){
+        return service.save(inventoryItem);
     }
 
     @RequestMapping(value = "/all",
                     method = RequestMethod.GET,
                     produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Medicine> findAll(){
+    public List<Inventory> findAll(){
         return service.findAll();
     }
 
     @RequestMapping(value = "/{id}",
                     method = RequestMethod.GET,
                     produces = MediaType.APPLICATION_JSON_VALUE)
-    public Medicine findOne(@PathVariable(value = "id") Integer id){
-        return service.findOne(id);
+    public Inventory findById(@PathVariable(value = "id") Integer id){
+        return service.findById(id);
     }
 
-/*    @RequestMapping(value = "/update")
-    public Medicine update(@RequestBody Medicine medicine){
-        return service.update(medicine);
-    }*/
+    @RequestMapping(value = "/update",
+                    method = RequestMethod.PUT,
+                    consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void update(@RequestBody Inventory inventoryItem) {
+        service.update(inventoryItem);
+    }
 }

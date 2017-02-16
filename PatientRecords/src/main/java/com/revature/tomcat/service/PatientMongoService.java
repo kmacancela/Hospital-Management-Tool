@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.revature.tomcat.beans.Patient;
-import com.revature.tomcat.data.PatientRepository;
+import com.revature.beans.Patient;
+import com.revature.data.PatientRepository;
 
 @Service
 public class PatientMongoService {

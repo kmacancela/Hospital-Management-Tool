@@ -1,10 +1,10 @@
-package com.revature.tomcat.data;
+package com.revature.data;
 
 import java.util.List;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.revature.tomcat.beans.Visit;
+import com.revature.beans.Visit;
 
 public interface VisitRepository extends MongoRepository<Visit, Integer>{
 	

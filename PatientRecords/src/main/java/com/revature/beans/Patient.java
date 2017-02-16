@@ -1,4 +1,4 @@
-package com.revature.tomcat.beans;
+package com.revature.beans;
 
 import java.util.List;
 import java.util.Map;
