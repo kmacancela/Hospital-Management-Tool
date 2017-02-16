@@ -9,7 +9,7 @@
 	</parent>
 	<artifactId>PatientVisits</artifactId>
 	<groupId>com.sherlockHomies</groupId>
-	<name>Spring Boot Tomcat Sample</name>
+	<name>Patient Visits</name>
 	<description>Spring Boot Tomcat Sample</description>
 	<version>1.0-SNAPSHOT</version>
 	<url>http://projects.spring.io/spring-boot/</url>
@@ -34,10 +34,31 @@
 			<artifactId>spring-webmvc</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+			<version>2.8.6</version>
+        </dependency>
 	</dependencies>
 	<build>
 		<plugins>

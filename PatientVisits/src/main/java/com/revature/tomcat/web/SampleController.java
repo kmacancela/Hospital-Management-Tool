@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.revature.controller;
+package com.revature.tomcat.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.revature.service.HelloWorldService;
+import com.revature.tomcat.service.HelloWorldService;
 
 @Controller
 public class SampleController {
