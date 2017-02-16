@@ -38,9 +38,10 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.revature.tomcat.SampleTomcatApplication;
+import com.revature.tomcat.service.HelloWorldService;
+import com.revature.tomcat.web.SampleController;
 import com.sherlockHomies.tomcat.NonAutoConfigurationSampleTomcatApplicationTests.NonAutoConfigurationSampleTomcatApplication;
-import com.sherlockHomies.tomcat.service.HelloWorldService;
-import com.sherlockHomies.tomcat.web.SampleController;
 
 import static org.junit.Assert.assertEquals;
 

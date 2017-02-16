@@ -28,6 +28,8 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.revature.tomcat.SampleTomcatApplication;
+
 import static org.junit.Assert.assertEquals;
 
 /**
