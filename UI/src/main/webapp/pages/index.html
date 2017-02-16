@@ -1,0 +1,279 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Hospital Management Tool</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!--Need for styled text fields-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css">
+    <!--Need for styled calendar-->
+    <link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2708/bootstrap-datetimepicker.min.css">
+    <!--Need for NavBar-->
+    <!--Need for calendar to popup-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!--Need for time to popup within calendar-->
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+    <!--Need for calendar to be clickable-->
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2708/bootstrap-datetimepicker.min.js"></script>
+    <!--Need for Font Awesome -->
+    <script src="https://use.fontawesome.com/1b8f96a0db.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <!--jQuery-->
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <style>
+        /* 'Open Sans' font from Google Fonts */
+
+        @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+        body {
+            background: #F1F1F1;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .login {
+            width: 400px;
+            margin: 16px auto;
+            font-size: 16px;
+        }
+        /* Reset top and bottom margins from certain elements */
+
+        .login-header,
+        .login p {
+            margin-top: 0;
+            margin-bottom: 0;
+            background-color: #ebebeb;
+        }
+        /* The triangle form is achieved by a CSS hack */
+
+        .login-triangle {
+            width: 0;
+            margin-right: auto;
+            margin-left: auto;
+            border: 12px solid transparent;
+            border-bottom-color: #28d;
+        }
+
+        .login-header {
+            background: #878a8e;
+            padding: 20px;
+            font-size: 1.4em;
+            font-weight: normal;
+            text-align: center;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .login-container {
+            background: #ebebeb;
+            padding: 12px;
+        }
+        /* Every row inside .login-container is defined with p tags */
+
+        .login p {
+            padding: 12px;
+        }
+
+        .login input {
+            box-sizing: border-box;
+            display: block;
+            width: 100%;
+            border-width: 1px;
+            border-style: solid;
+            padding: 16px;
+            outline: 0;
+            font-family: inherit;
+            font-size: 0.95em;
+        }
+
+        .login input[type="email"],
+        .login input[type="password"] {
+            background: #fff;
+            border-color: #bbb;
+            color: #555;
+        }
+        /* Text fields' focus effect */
+
+        .login input[type="email"]:focus,
+        .login input[type="password"]:focus {
+            border-color: #888;
+        }
+
+        .login input[type="submit"] {
+            background: #28d;
+            border-color: transparent;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .login input[type="submit"]:hover {
+            background: #17c;
+        }
+        /* Buttons' focus effect */
+
+        .login input[type="submit"]:focus {
+            border-color: #05a;
+        }
+
+        .panel-title:hover {
+            cursor: pointer;
+        }
+
+        #left {
+            position: absolute;
+            left: 0px;
+            width: 50%;
+        }
+
+        #right {
+            position: absolute;
+            right: 0px;
+            width: 50%;
+        }
+
+        .padding {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="bod">
+
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <ul class="nav">
+                    <li><a class="brand">Hospital Central</a></li>
+                    <li>
+                        <a href="#">Patient Portal</a>
+                    </li>
+                    <li>
+                        <a href="#">Medicine Portal</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li role="presentation">
+                        <button onClick="logout()" class="btn btn-primary" style="margin-top: 5px;
+                            margin-right:-40px" value="Logout">Refresh</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="login" id="login">
+        <br><br><br>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <img src="http://ladyhammondvets.com/wp-content/uploads/2015/06/pets-580x307.png">
+                <h2 class="login-header">Welcome to Pet Clinic</h2>
+                <div class="login-container">
+                    <p>
+                        <input type="text" id="ownerId" placeholder="Enter your ID"> </p>
+                    <p>
+                        <input id="button2" type="submit" value="Find your appointments"> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="container" hidden="true">
+
+        <div class="container">
+            <div id="left">
+                <div class="padding">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h2 id="title1" style="display:none; color: #555555;">Completed Appointments</h2>
+                            <table id="table2" class="table table-hover" hidden="true">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>Pet</th>
+                                    <th>Vet</th>
+                                    <th>Issue</th>
+                                    <th>Prescription</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h2 id="title2" style="display:none; color: #555555;">Upcoming Appointments</h2>
+                            <table id="table5" class="table table-hover" hidden="true">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>Pet</th>
+                                    <th>Vet</th>
+                                    <th>Issue</th>
+                                    <th></th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="right">
+                <div class="padding">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h2 style="color: #555555;">Schedule an Appointment</h2>
+                            <div class="row stylish-panel">
+                                <div style="display:inline-block; float:left; margin-left:50px; margin-right:150px">
+                                    <p style="text-align: center;">Jessica Adams</p>
+                                    <figure><img src="http://tinyurl.com/jq9zu9o" alt="femaleVet" class="img-circle img-thumbnail"></figure>
+                                </div>
+                                <div style="display:inline-block">
+                                    <p style="text-align: center;">Tim Miller</p>
+                                    <figure> <img src="http://tinyurl.com/hchzq49" alt="maleVet" class="img-circle img-thumbnail"> </figure>
+                                </div>
+                            </div><br/><br/>
+                            <div id="addItem">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">
+                                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                    </span>
+                                    <select class="form-control" id="table1">
+                                        <option value="" disabled selected>Select a vet...</option>
+                                    </select>
+                                </div><br>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">
+                                        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                                    </span>
+                                    <select class="form-control" id="table9">
+                                        <option value="" disabled selected>Select your pet...</option>
+                                    </select>
+                                </div><br>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">
+                                        <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                                    </span>
+                                    <input id="date" class="form-control" type="text" style="height: 30px"
+                                           placeholder="Appointment date as MM-DD-YYYY">
+                                </div><br>
+                                <textarea id="description" class="form-control" rows="3" placeholder="Enter a description">
+                                </textarea>
+                                <input id="addAppt" type="submit" value="Submit Appointment" onClick="logout()"
+                                       class="btn btn-primary btn-lg btn-block"> </div>
+                        </div>
+                    </div>
+                    <img src="http://burnsvillevet.com/wp-content/uploads/sites/176/2015/01/36.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $('#button2').click(function () {
+        $('#login').toggle();
+        $("#container").attr("hidden", false)
+    });
+</script>
+</html>
