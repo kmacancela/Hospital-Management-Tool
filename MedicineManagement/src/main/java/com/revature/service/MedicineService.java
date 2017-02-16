@@ -30,7 +30,8 @@ public class MedicineService {
     public Medicine findOne(Integer id){
         return repository.findOne(id);
     }
-    public Medicine update(Medicine medicine){
+
+    /*public Medicine update(Medicine medicine){
         return repository.update(medicine);
-    }
+    }*/
 }

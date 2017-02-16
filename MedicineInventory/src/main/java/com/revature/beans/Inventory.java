@@ -14,7 +14,9 @@ public class Inventory {
     private int stock;
     private String lastRestockDate;
 
-    public Inventory(){}
+    public Inventory() {
+        super();
+    }
 
     public Inventory(int inventoryId, int medicineId, int clinicId, int stock, String lastRestockDate) {
         this.inventoryId = inventoryId;

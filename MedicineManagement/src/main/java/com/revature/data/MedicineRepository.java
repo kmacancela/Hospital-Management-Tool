@@ -16,5 +16,5 @@ public interface MedicineRepository extends MongoRepository<Medicine, Integer> {
 
     Medicine findOne(Integer id);
 
-    <S extends Medicine> S update(S medicine);
+    //<S extends Medicine> S update(S medicine);
 }

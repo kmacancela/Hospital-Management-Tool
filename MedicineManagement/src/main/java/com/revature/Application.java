@@ -1,3 +1,4 @@
+package com.revature;
 /*
  * Copyright 2012-2013 the original author or authors.
  *
@@ -27,7 +28,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan(basePackages="com.revature")
+@ComponentScan
 public class Application {
 
 	private static Log logger = LogFactory.getLog(Application.class);

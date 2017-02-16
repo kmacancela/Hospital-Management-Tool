@@ -29,11 +29,11 @@ public class InventoryService {
         return repository.findAll();
     }
 
-    public Inventory findById(Integer id){
-        return repository.findById(id);
+    public Inventory findOne(Integer id){
+        return repository.findOne(id);
     }
 
-    public void update(Inventory inventoryItem) {
+    /*public void update(Inventory inventoryItem) {
         repository.update(inventoryItem);
-    }
+    }*/
 }
