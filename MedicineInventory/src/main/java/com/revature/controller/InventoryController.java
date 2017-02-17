@@ -23,17 +23,17 @@ public class InventoryController {
         this.service = service;
     }
 
-    @RequestMapping(value = "/new",
+    @RequestMapping(value = "/save",
                     method = RequestMethod.POST,
-                    consumes = {MediaType.APPLICATION_JSON_VALUE},
-                    produces = {MediaType.APPLICATION_JSON_VALUE})
+                    consumes = MediaType.APPLICATION_JSON_VALUE,
+                    produces = MediaType.APPLICATION_JSON_VALUE)
     public Inventory save(@RequestBody Inventory inventoryItem){
         return service.save(inventoryItem);
     }
 
     @RequestMapping(value = "/all",
                     method = RequestMethod.GET,
-                    produces = {MediaType.APPLICATION_JSON_VALUE})
+                    produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Inventory> findAll(){
         return service.findAll();
     }
@@ -44,11 +44,4 @@ public class InventoryController {
     public Inventory findById(@PathVariable(value = "id") Integer id){
         return service.findOne(id);
     }
-
-/*    @RequestMapping(value = "/update",
-                    method = RequestMethod.PUT,
-                    consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void update(@RequestBody Inventory inventoryItem) {
-        service.update(inventoryItem);
-    }*/
 }
