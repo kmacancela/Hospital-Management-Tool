@@ -32,7 +32,7 @@ public class PatientController {
 		return new ResponseEntity<List<Patient>>(service.findAll(),HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/patient/patientId/{id}",method=RequestMethod.GET,
+	@RequestMapping(value="/patient/patientId/{patientId}",method=RequestMethod.GET,
 			produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Patient> getByPatientId(@PathVariable Integer patientId){
 		return new ResponseEntity<Patient>(service.findByPatientId(patientId),HttpStatus.OK);
