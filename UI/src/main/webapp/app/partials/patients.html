@@ -1,70 +1,49 @@
-<div> <!-- ng-controller="findGame" -->
-    <h2>Find a patient</h2>
-    <div class="form-group">
-        <label for="query">ID</label>
-        <input ng-model="query" type="text" class="form-control" id="title" aria-describedby="queryHelp"
-               placeholder="Enter ID">
-            <small id="queryHelp" class="form-text text-muted">The Game ID to query</small>
-    </div>
-    <button ng-click="fetch()" type="submit" class="btn btn-primary">Submit</button>
-    <div ng-show="result">
-        Found game: {{result.title}}
-    </div>
-    <div ng-show="error" class="alert alert-danger" role="alert">
-        {{error}}
-    </div>
-</div>
-
-
-
-
 <div>
-    <!-- ng-controller="allGames" -->
-    <h2>Patients</h2>
-    <div class="input-group">
-        <input type="text" ng-model="search.$" />
-        <span class="glyphicon glyphicon-search">
-		</span>
-    </div>
-    <table class="table table-striped">
+    <table id="patientTable" datatable="ng" class="table table-striped table-bordered" width="100%" role="grid">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Phone Number</th>
+            <th class="sorting">Patient ID</th>
+            <th class="sorting">First Name</th>
+            <th class="sorting">Last Name</th>
+            <th class="sorting">Phone Number</th>
         </tr>
         </thead>
         <tbody>
-        <!-- $scope.games -->
-        <tr ng-repeat="temp in games | filter:search">
-            <td>{{temp.id}}</td>
-            <td>{{temp.title}}</td>
-            <td>{{temp.genre}}</td>
+        <tr ng-repeat="patient in patients">
+            <td>{{patient.id}}</td>
+            <td>{{patient.firstName}}</td>
+            <td>{{patient.lastName}}</td>
+            <td>{{patient.phoneNumber}}</td>
         </tr>
         </tbody>
     </table>
 </div>
 
 
+<form class="form-horizontal" role="form" ng-submit="createPatient()">
+    First Name: <input type="text" ng-model="firstName">
+    Last Name: <input type="text" ng-model="lastName">
+    Phone Number: <input type="text" ng-model="phoneNumber">
+    <input type="submit" value="Submit" class="btn btn-primary"/>
+</form>
 
+<br>
 
+Find By
+<form class="form-horizontal" role="form" ng-submit="getPatient()">
+    Patient ID: <input type="text" ng-model="id">
+    <input type="submit" value="Submit" class="btn btn-primary"/>
+</form>
 
+<br>
 
-<div> <!-- ng-controller="addGame" -->
-    <h2>Add a patient</h2>
-    <form ng-submit="send()">
-        <div class="form-group">
-            <label for="title">Game title</label>
-            <input type="text" ng-model="title" class="form-control" id="title" aria-describedby="titleHelp"
-                   placeholder="Enter title">
-            <small id="titleHelp" class="form-text text-muted">Name of the game.</small>
-        </div>
-        <div class="form-group">
-            <label for="genre">Genre</label>
-            <input type="text" ng-model="genre" class="form-control" id="title" aria-describedby="genreHelp"
-                   placeholder="Enter genre">
-            <small id="genreHelp" class="form-text text-muted">The game's genre.</small>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
+Edit patient
+<form class="form-horizontal" role="form" ng-submit="editPatient()">
+    Patient ID: <input type="text" ng-model="id">
+    First Name: <input type="text" ng-model="firstName">
+    Last Name: <input type="text" ng-model="lastName">
+    Phone Number: <input type="text" ng-model="phoneNumber">
+    <input type="submit" value="Submit" class="btn btn-primary"/>
+</form>
+
+<br>
