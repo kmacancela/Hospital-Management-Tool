@@ -92,7 +92,7 @@ public class PatientService {
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<Patient> response = new HttpEntity<Patient>(patient,headers);
 		final String URI = UriComponentsBuilder.fromHttpUrl(url).path("patient/save").build().toString();
-		ResponseEntity<Patient> patientResponse = restTemplate.exchange(URI, HttpMethod.PUT, response, Patient.class);
+		ResponseEntity<Patient> patientResponse = restTemplate.exchange(URI, HttpMethod.POST, response, Patient.class);
 		return patientResponse;
 	}
 	
@@ -179,7 +179,7 @@ public class PatientService {
 		
 		HttpEntity<Visit> response = new HttpEntity<Visit>(visit, headers);
 		
-		ResponseEntity<Visit> visitResponse = restTemplate.exchange(URI, HttpMethod.PUT, 
+		ResponseEntity<Visit> visitResponse = restTemplate.exchange(URI, HttpMethod.POST, 
 				response,Visit.class);
 		
 		return visitResponse;
@@ -266,7 +266,7 @@ public class PatientService {
 		
 		HttpEntity<Prescription> response = new HttpEntity<Prescription>(prescription, headers);
 		
-		ResponseEntity<Prescription> prescriptionResponse = restTemplate.exchange(URI, HttpMethod.PUT, 
+		ResponseEntity<Prescription> prescriptionResponse = restTemplate.exchange(URI, HttpMethod.POST, 
 				response,Prescription.class);
 		//TODO if this is part of another API that updates inventory we reduce the medicine inventory here
 		//int prescriptionQuantity = prescription.getQuantity();

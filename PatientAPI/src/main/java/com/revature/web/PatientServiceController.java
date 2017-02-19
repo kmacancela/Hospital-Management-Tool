@@ -17,7 +17,7 @@ import com.revature.beans.Visit;
 import com.revature.delegate.Delegate;
 
 @RestController
-public class VisitController {
+public class PatientServiceController {
 
 	private Delegate delegate;
 
@@ -39,7 +39,7 @@ public class VisitController {
 		return delegate.findAllPatients();
 	}
 	
-	@RequestMapping(value="/patients/save", method=RequestMethod.PUT,
+	@RequestMapping(value="/patients/save", method=RequestMethod.POST,
 			produces=MediaType.APPLICATION_JSON_VALUE,
 			consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Patient> savePatient(@RequestBody Patient patient){
@@ -64,7 +64,7 @@ public class VisitController {
 		return delegate.findVisitsByPatientId(patientId);
 	}
 	
-	@RequestMapping(value="/visits/save",method=RequestMethod.PUT,
+	@RequestMapping(value="/visits/save",method=RequestMethod.POST,
 			produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Visit> saveVisit(@RequestBody Visit visit){
 		return delegate.saveVisit(visit);
@@ -88,12 +88,11 @@ public class VisitController {
 		return delegate.findPrescriptionsByPatientId(patientId);
 	}
 	
-	@RequestMapping(value="/prescriptions/id/{prescriptionId}",method=RequestMethod.POST,
+	@RequestMapping(value="/prescriptions/save",method=RequestMethod.POST,
 			consumes=MediaType.APPLICATION_JSON_VALUE,
 			produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Prescription> savePrescription(@RequestBody Prescription prescription){
 		return delegate.savePrescription(prescription);
-	}	
-	
+	}
 	
 }
