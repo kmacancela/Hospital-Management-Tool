@@ -1,5 +1,7 @@
 package com.revature.delegate;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -17,12 +19,25 @@ public class Delegate {
 	public void setService(PatientService patientService) {
 		this.patientService = patientService;
 	}
+
+	public ResponseEntity<Patient> findPatientById(Integer patientId) {
+		return patientService.findPatientById(patientId);
+	}
+
+	public ResponseEntity<List<Patient>> findAllPatients() {
+		return patientService.findAllPatients();
+	}
+
+	public ResponseEntity<Patient> savePatient(Patient patient) {
+		return patientService.savePatient(patient);
+	}
+
+	public ResponseEntity<Visit> getVisitById(Integer visitId) {
+		return patientService.getVisitById(visitId);
+	}
 	
-	public ResponseEntity<Visit> getVisitById(Integer visitId){return patientService.getVisitById(visitId);}
-	
-	public ResponseEntity<Patient> findPatientById(Integer patientId){return patientService.findPatientById(patientId);}
-	
-	
-	
-	
+	public ResponseEntity<List<Visit>> findVisitByUserId(Integer userId){
+		return patientService.findVisitsByPatientId(userId);
+	}
+
 }
