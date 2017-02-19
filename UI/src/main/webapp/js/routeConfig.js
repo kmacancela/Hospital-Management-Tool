@@ -5,18 +5,18 @@ app.config(function ($locationProvider,$routeProvider, $logProvider) {
     $logProvider.debugEnabled(true);
     $routeProvider
         .when('/',{
-            templateUrl:'/app/partials/home.html'
+            templateUrl:'/pages/home.html'
         })
         .when('/patients',{
-            templateUrl:'/app/partials/patients.html',
+            templateUrl:'/pages/patients.html',
             controller: 'patientController'
         })
         .when('/customers',{
-            templateUrl:'/app/partials/medicine.html',
+            templateUrl:'/pages/medicine.html',
             controller: 'medicineController'
         })
         .when('/catalog',{
-            templateUrl:'/app/partials/clinics.html',
+            templateUrl:'/pages/clinics.html',
             controller: 'clinicController'
         });
 });
