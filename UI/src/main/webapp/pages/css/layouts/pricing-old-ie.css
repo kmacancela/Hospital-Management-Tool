@@ -53,9 +53,9 @@ p {
 .banner {
     background: transparent url('https://dpcintegration.files.wordpress.com/2015/10/adobestock_66020892.jpeg') 0 0 no-repeat fixed;
     text-align: center;
-    background-size: cover;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='https://dpcintegration.files.wordpress.com/2015/10/adobestock_66020892.jpeg', sizingMethod='scale');
-    height: 200px;
+/*    background-size: cover;*/
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='https://dpcintegration.files.wordpress.com/2015/10/adobestock_66020892.jpeg');
+/*    height: 200px;*/
     width: 100%;
     margin-bottom: 3em;
     display: table;
@@ -65,7 +65,7 @@ p {
     display: table-cell;
     vertical-align: middle;
     margin-bottom: 0;
-    font-size: 2em;
+/*    font-size: 2em;*/
     color: white;
     font-weight: 500;
     text-shadow: 0 1px 1px black;
@@ -78,7 +78,7 @@ p {
 
 .pricing-tables,
 .information {
-    max-width: 980px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
