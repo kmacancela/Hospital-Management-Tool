@@ -13,35 +13,50 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.revature;
+
+package com.revature.tomcat;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-@EnableDiscoveryClient
+@Configuration
+@EnableAutoConfiguration
+@ComponentScan
 @SpringBootApplication
-public class Application {
-    private static Log logger = LogFactory.getLog(Application.class);
-    public static void main(String[] args) throws Exception {
-        SpringApplication.run(Application.class, args);
-    }
-    @Bean
-    protected ServletContextListener listener() {
-        return new ServletContextListener() {
-            @Override
-            public void contextInitialized(ServletContextEvent sce) {
-                logger.info("ServletContext initialized");
-            }
-            @Override
-            public void contextDestroyed(ServletContextEvent sce) {
-                logger.info("ServletContext destroyed");
-            }
-        };
-    }
+@EnableDiscoveryClient
+@EnableZuulProxy			//forward requests to the service we mention in the request
+public class HospitalManagementApplication {
+
+	private static Log logger = LogFactory.getLog(HospitalManagementApplication.class);
+
+	public static void main(String[] args) throws Exception {
+		SpringApplication.run(HospitalManagementApplication.class, args);
+	}
+
+	@Bean
+	protected ServletContextListener listener() {
+		return new ServletContextListener() {
+			@Override
+			public void contextInitialized(ServletContextEvent sce) {
+				logger.info("ServletContext initialized");
+			}
+
+			@Override
+			public void contextDestroyed(ServletContextEvent sce) {
+				logger.info("ServletContext destroyed");
+			}
+		};
+	}
+
 }

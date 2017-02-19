@@ -12,6 +12,7 @@ import java.util.List;
  * Created by Sibrian on 2/15/17.
  */
 @RestController
+@RequestMapping(value = "/user")
 public class UserController {
 
     private UserService userService;
@@ -21,7 +22,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/user",
+    @RequestMapping(value = "/save",
                     method = RequestMethod.POST,
                     consumes = {MediaType.APPLICATION_JSON_VALUE},
                     produces = {MediaType.APPLICATION_JSON_VALUE})
