@@ -16,9 +16,11 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.netflix.appinfo.InstanceInfo;
+import com.netflix.client.http.HttpResponse;
 import com.netflix.discovery.EurekaClient;
 import com.netflix.discovery.shared.Application;
 import com.revature.beans.Patient;
+import com.revature.beans.Prescription;
 import com.revature.beans.Visit;
 
 @Service
@@ -40,8 +42,8 @@ public class PatientService {
 		
 		InstanceInfo patientInstanceInfo = list.get(0);
 		
-		String host = "http://"+ patientInstanceInfo.getHostName()+":"+patientInstanceInfo.getPort()+"/";
-		final String URI = UriComponentsBuilder.fromHttpUrl(host).path("patient/id/").path(patientId.toString()).build().toString();
+		String url = "http://"+ patientInstanceInfo.getHostName()+":"+patientInstanceInfo.getPort()+"/";
+		final String URI = UriComponentsBuilder.fromHttpUrl(url).path("patient/id/").path(patientId.toString()).build().toString();
 		
 		Patient patient = null;
 		ResponseEntity<Patient> response = null;
@@ -62,8 +64,8 @@ public class PatientService {
 		List<InstanceInfo> list = application.getInstances();
 		
 		InstanceInfo patientInstanceInfo = list.get(0);
-		String host = "http://"+patientInstanceInfo.getHostName()+":"+patientInstanceInfo.getPort()+"/";
-		final String URI = UriComponentsBuilder.fromHttpUrl(host).path("patient/all").build().toString();
+		String url = "http://"+patientInstanceInfo.getHostName()+":"+patientInstanceInfo.getPort()+"/";
+		final String URI = UriComponentsBuilder.fromHttpUrl(url).path("patient/all").build().toString();
 		ResponseEntity<Patient[]> response = null;
 		List<Patient> patients = new ArrayList<Patient>();
 		
@@ -84,12 +86,12 @@ public class PatientService {
 		
 		InstanceInfo patientInstanceInfo = list.get(0);
 		
-		String host = "http://"+patientInstanceInfo.getHostName()+":"+patientInstanceInfo.getPort()+"/";
+		String url = "http://"+patientInstanceInfo.getHostName()+":"+patientInstanceInfo.getPort()+"/";
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<Patient> response = new HttpEntity<Patient>(patient,headers);
-		final String URI = UriComponentsBuilder.fromHttpUrl(host).path("patient/save").build().toString();
+		final String URI = UriComponentsBuilder.fromHttpUrl(url).path("patient/save").build().toString();
 		ResponseEntity<Patient> patientResponse = restTemplate.exchange(URI, HttpMethod.PUT, response, Patient.class);
 		return patientResponse;
 	}
@@ -125,8 +127,8 @@ public class PatientService {
 		
 		InstanceInfo visitInstanceInfo = list.get(0);
 		
-		String host = "http://"+visitInstanceInfo.getHostName()+":"+visitInstanceInfo.getPort()+"/";
-		final String URI = UriComponentsBuilder.fromHttpUrl(host).path("visit/user/")
+		String url = "http://"+visitInstanceInfo.getHostName()+":"+visitInstanceInfo.getPort()+"/";
+		final String URI = UriComponentsBuilder.fromHttpUrl(url).path("visit/user/")
 				.path(userId.toString()).build().toString();
 		ResponseEntity<Visit[]> response = null;
 		List<Visit>  visits = new ArrayList<Visit>();
@@ -147,8 +149,8 @@ public class PatientService {
 		
 		InstanceInfo visitInstanceInfo = list.get(0);
 		
-		String host = "http://"+visitInstanceInfo.getHostName()+":"+visitInstanceInfo.getPort()+"/";
-		final String URI = UriComponentsBuilder.fromHttpUrl(host).path("visit/patient/")
+		String url = "http://"+visitInstanceInfo.getHostName()+":"+visitInstanceInfo.getPort()+"/";
+		final String URI = UriComponentsBuilder.fromHttpUrl(url).path("visit/patient/")
 				.path(patientId.toString()).build().toString();
 		ResponseEntity<Visit[]> response = null;
 		List<Visit> visits = new ArrayList<Visit>();
@@ -161,6 +163,115 @@ public class PatientService {
 		return new ResponseEntity<List<Visit>>(visits, HttpStatus.OK);
 	}
 	
+	public ResponseEntity<Visit> saveVisit(Visit visit){
+		RestTemplate restTemplate = new RestTemplate();
+		Application application = discoveryClient.getApplication("visit");
+		List<InstanceInfo> list = application.getInstances();
+		
+		InstanceInfo visitInstanceInfo = list.get(0);
+		
+		String url = "http://"+visitInstanceInfo.getHostName()+":"+visitInstanceInfo.getPort()+"/";
+		final String URI = UriComponentsBuilder.fromHttpUrl(url).path("/visit/save")
+				.build().toString();
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		
+		HttpEntity<Visit> response = new HttpEntity<Visit>(visit, headers);
+		
+		ResponseEntity<Visit> visitResponse = restTemplate.exchange(URI, HttpMethod.PUT, 
+				response,Visit.class);
+		
+		return visitResponse;
+	}
 	
+	//***************************************Prescription Code********************************//
+	
+	public ResponseEntity<Prescription> findPrescriptionById(Integer prescriptionId){
+		RestTemplate restTemplate = new RestTemplate();
+		Application application = discoveryClient.getApplication("prescription");
+		List<InstanceInfo> list = application.getInstances();
+		InstanceInfo prescriptionInstanceInfo = list.get(0);
+		
+		String url = "http://"+prescriptionInstanceInfo.getHostName()+":"+prescriptionInstanceInfo.getPort()+"/";
+		final String URI = UriComponentsBuilder.fromHttpUrl(url).path("prescription/id/")
+				.path(prescriptionId.toString()).build().toString();
+		
+		Prescription prescription = null;
+		ResponseEntity<Prescription> response = null;
+		try{
+			response = restTemplate.getForEntity(URI, Prescription.class);
+			prescription = response.getBody();
+		}catch(RuntimeException e){
+			response = new ResponseEntity<Prescription>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<Prescription>(prescription,HttpStatus.OK);
+	}
+	
+	public ResponseEntity<List<Prescription>> findPrescriptionsByUserId(Integer userId){
+		RestTemplate restTemplate = new RestTemplate();
+		Application application = discoveryClient.getApplication("prescription");
+		List<InstanceInfo> list = application.getInstances();
+		InstanceInfo prescriptionInstanceInfo = list.get(0);
+		
+		String url = "http://"+prescriptionInstanceInfo.getHostName()+":"+prescriptionInstanceInfo.getPort()+"/";
+		final String URI = UriComponentsBuilder.fromHttpUrl(url).path("prescription/user/")
+				.path(userId.toString()).build().toString();
+		
+		ResponseEntity<Prescription[]> response = null;
+		List<Prescription> prescriptions = null;
+		try{
+			response = restTemplate.getForEntity(URI, Prescription[].class);
+			prescriptions = Arrays.asList(response.getBody());
+		}catch(RuntimeException e){
+			response = new ResponseEntity<Prescription[]>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<List<Prescription>>(prescriptions, HttpStatus.OK);
+	}
+	
+	public ResponseEntity<List<Prescription>> findPrescriptionsByPatientId(Integer patientId){
+		RestTemplate restTemplate = new RestTemplate();
+		Application application = discoveryClient.getApplication("prescription");
+		List<InstanceInfo> list = application.getInstances();
+		InstanceInfo prescriptionInstanceInfo = list.get(0);
+		
+		String url = "http://"+prescriptionInstanceInfo.getHostName()+":"+prescriptionInstanceInfo.getPort()+"/";
+		final String URI = UriComponentsBuilder.fromHttpUrl(url).path("prescription/patient/")
+				.path(patientId.toString()).build().toString();
+		
+		ResponseEntity<Prescription[]> response = null;
+		List<Prescription> prescriptions = new ArrayList<Prescription>();
+		try{
+			response = restTemplate.getForEntity(URI, Prescription[].class);
+			prescriptions = Arrays.asList(response.getBody());
+		}catch(Exception e){
+			response = new ResponseEntity<Prescription[]>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<List<Prescription>>(prescriptions,HttpStatus.OK);
+	}
+	
+	public ResponseEntity<Prescription> savePrescription(Prescription prescription){
+		RestTemplate restTemplate = new RestTemplate();
+		Application application = discoveryClient.getApplication("prescription");
+		List<InstanceInfo> list = application.getInstances();
+		
+		InstanceInfo visitInstanceInfo = list.get(0);
+		
+		String url = "http://"+visitInstanceInfo.getHostName()+":"+visitInstanceInfo.getPort()+"/";
+		final String URI = UriComponentsBuilder.fromHttpUrl(url).path("/prescription/save")
+				.build().toString();
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		
+		HttpEntity<Prescription> response = new HttpEntity<Prescription>(prescription, headers);
+		
+		ResponseEntity<Prescription> prescriptionResponse = restTemplate.exchange(URI, HttpMethod.PUT, 
+				response,Prescription.class);
+		//TODO if this is part of another API that updates inventory we reduce the medicine inventory here
+		//int prescriptionQuantity = prescription.getQuantity();
+		//method updates Medicine Quantity here
+		return prescriptionResponse;
+	}
 
 }
