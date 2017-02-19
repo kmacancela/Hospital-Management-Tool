@@ -32,5 +32,9 @@ public class PrescriptionMongoService {
 	public <S extends Prescription> S save(S prescription){
 		return repository.save(prescription);
 	}
+	
+	public void deletePrescription(Integer prescriptionId){
+		repository.delete(prescriptionId);
+	}
 
 }
