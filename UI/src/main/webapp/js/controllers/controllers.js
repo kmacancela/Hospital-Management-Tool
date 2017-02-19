@@ -1,5 +1,5 @@
-angular.module("app").controller("allPatients",
-    function ($http, $scope) {
+/* Get all patients */
+angular.module("app").controller("allPatients", function ($http, $scope) {
         $http({
             url: "http://localhost:12349/patient/all",
             method: "GET"
@@ -10,6 +10,7 @@ angular.module("app").controller("allPatients",
         });
     });
 
+/* Get a patient */
 angular.module("app").controller("findPatient",
     function ($http, $scope, $timeout) {
         $scope.fetch = function () {
@@ -29,6 +30,7 @@ angular.module("app").controller("findPatient",
         }
     });
 
+/* Add a patient */
 angular.module("app").controller("addPatient",
     function ($http, $scope) {
         $scope.send = function () {
