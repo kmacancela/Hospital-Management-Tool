@@ -32,12 +32,12 @@ import org.springframework.context.annotation.Configuration;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-public class SampleTomcatApplication {
+public class PatientAPIApplication {
 
-	private static Log logger = LogFactory.getLog(SampleTomcatApplication.class);
+	private static Log logger = LogFactory.getLog(PatientAPIApplication.class);
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(SampleTomcatApplication.class, args);
+		SpringApplication.run(PatientAPIApplication.class, args);
 	}
 
 	@Bean
