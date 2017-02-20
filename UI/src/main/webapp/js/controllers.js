@@ -12,6 +12,7 @@ app.controller("patientController", function ($scope, $log, $q, $route, patientS
 
     $scope.editPatient = function() {
         var patientObj = {
+        	patientId: $scope.patientId,
             patientFirstName: $scope.patientFirstName,
             patientLastName: $scope.patientLastName,
             phoneNumber: $scope.phoneNumber
@@ -24,6 +25,7 @@ app.controller("patientController", function ($scope, $log, $q, $route, patientS
     $scope.getPatient = function () {
         var id = $scope.id;
         patientService.getPatientById(id).then(function(response){
+        	$scope.result=response;
             $log.debug(response);
         });
     };
