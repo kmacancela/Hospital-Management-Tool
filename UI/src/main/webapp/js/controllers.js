@@ -90,8 +90,8 @@ app.controller("clinicController", function ($scope, $log, $q, $route, clinicSer
     };
 
     $scope.getClinic = function () {
-        var id = $scope.id;
-        clinicService.getClinicById(id).then(function(response){
+        var findId = $scope.findId;
+        clinicService.getClinicById(findId).then(function(response){
             $scope.result=response;
             $log.debug(response);
         });
