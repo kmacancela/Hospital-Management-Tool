@@ -14,7 +14,7 @@ import java.util.List;
  * Created by Sibrian on 2/19/17.
  */
 @RestController
-public class PatientRecordsController {
+public class UserRecordsController {
 
     private Delegate delegate;
 
@@ -23,7 +23,7 @@ public class PatientRecordsController {
         this.delegate = delegate;
     }
 
-    @RequestMapping(value = "/user/save",
+    @RequestMapping(value = "/users/save",
                     method = RequestMethod.POST,
                     produces = MediaType.APPLICATION_JSON_VALUE,
                     consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -32,21 +32,21 @@ public class PatientRecordsController {
     }
 
 
-    @RequestMapping(value = "/user/getAll",
+    @RequestMapping(value = "/users/getAll",
                     method = RequestMethod.GET,
                     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<User>> findAllUsers() {
         return delegate.findAllUsers();
     }
 
-    @RequestMapping(value = "/user/search/id/{id}",
+    @RequestMapping(value = "/users/search/id/{id}",
                     method = RequestMethod.GET,
                     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> findUserById(@PathVariable Integer id) {
         return delegate.findUserById(id);
     }
 
-    @RequestMapping(value = "/user/search/name/{lName}",
+    @RequestMapping(value = "/users/search/name/{lName}",
                     method = RequestMethod.GET,
                     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> findUserByLastName(@PathVariable String lName) {
@@ -56,7 +56,7 @@ public class PatientRecordsController {
     /**
      * CLINIC ENDPOINTS
      */
-    @RequestMapping(value = "/clinic/save",
+    @RequestMapping(value = "/clinics/save",
                     method = RequestMethod.POST,
                     produces = MediaType.APPLICATION_JSON_VALUE,
                     consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -64,21 +64,21 @@ public class PatientRecordsController {
             return delegate.saveClinic(clinic);
     }
 
-    @RequestMapping(value = "/clinic/getAll",
+    @RequestMapping(value = "/clinics/getAll",
                     method = RequestMethod.GET,
                     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Clinic>> findAllClinics() {
         return delegate.findAllClinics();
     }
 
-    @RequestMapping(value = "/clinic/search/name/{name}",
+    @RequestMapping(value = "/clinics/search/name/{name}",
                     method = RequestMethod.GET,
                     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Clinic> findClinicByName(@PathVariable String name) {
         return delegate.findClinicByName(name);
     }
 
-    @RequestMapping(value = "/clinic/search/id/{id}",
+    @RequestMapping(value = "/clinics/search/id/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Clinic> findClinicById(@PathVariable String id) {

@@ -164,7 +164,7 @@ public class UserRecordsService {
 
         InstanceInfo clinicInstanceInfo = list.get(0);
         String host = "http://"+clinicInstanceInfo.getHostName()+":"+clinicInstanceInfo.getPort()+"/";
-        final String URI = UriComponentsBuilder.fromHttpUrl(host).path("clinic/search/name").path(name.toString()).build().toString();
+        final String URI = UriComponentsBuilder.fromHttpUrl(host).path("clinic/search/name/").path(name.toString()).build().toString();
 
         Clinic clinic = null;
         ResponseEntity<Clinic> response = null;
@@ -187,7 +187,7 @@ public class UserRecordsService {
 
         InstanceInfo clinicInstanceInfo = list.get(0);
         String host = "http://"+clinicInstanceInfo.getHostName()+":"+clinicInstanceInfo.getPort()+"/";
-        final String URI = UriComponentsBuilder.fromHttpUrl(host).path("clinic/search/id").path(id.toString()).build().toString();
+        final String URI = UriComponentsBuilder.fromHttpUrl(host).path("clinic/search/id/").path(id.toString()).build().toString();
 
         Clinic clinic = null;
         ResponseEntity<Clinic> response = null;
