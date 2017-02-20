@@ -2,9 +2,9 @@ app.factory("clinicService", function ($log, $http) {
     var clinics = {};
 
     clinics.allClinics = function(){
-        $log.debug( serverURL+"/records/clinic/getAll");
+        $log.debug( serverURL+"/userapi/clinics/getAll");
         return $http({
-            url : serverURL+"/records/clinic/getAll",
+            url : serverURL+"/userapi/clinics/getAll",
             method : "GET"
         }).then(function(response) {
             $log.debug("Clinics successfully retrieved");
@@ -17,7 +17,7 @@ app.factory("clinicService", function ($log, $http) {
 
     clinics.getClinicById = function(id){
         return $http({
-            url: serverURL+"/records/clinic/search/id/"+id,
+            url: serverURL+"/userapi/clinics/search/id/"+id,
             method:"GET"
         }).then(function(response){
             return response.data
@@ -31,7 +31,7 @@ app.factory("clinicService", function ($log, $http) {
         console.log("in Service");
         $log.debug(clinicObj);
         return $http({
-            url: serverURL+"/records/clinic/save",
+            url: serverURL+"/userapi/clinics/save",
             method: "POST",
             data: clinicObj
         }).then(function (response) {
@@ -46,7 +46,7 @@ app.factory("clinicService", function ($log, $http) {
     clinics.editMedicine = function(clinicObj){
         $log.debug(clinicObj);
         return $http({
-            url: serverURL+"/records/clinic/save",
+            url: serverURL+"/userapi/clinics/save",
             method: "POST",
             data: clinicObj
         }).then(function (response) {
