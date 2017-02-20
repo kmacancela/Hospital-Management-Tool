@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 <head>
     <meta charset="ISO-8859-1">
     <title>Gamestop</title>
@@ -24,9 +24,11 @@
             src="https://code.angularjs.org/1.6.1/angular.js"></script>
     <script type="text/javascript"
             src="https://code.angularjs.org/1.6.1/angular-route.js"></script>
-    <script type="text/javascript" src="gamestore.js"></script>
+    <script type="text/javascript" src="js/routeConfig.js"></script>
+    <script type="text/javascript" src="js/controllers.js"></script>
+    <script type="text/javascript" src=js/patientService.js></script>
 </head>
-<body ng-app="hospitalController">
+<body ng-controller="patientController">
 <!-- NAV BAR -->
 <nav class="navbar navbar-default">
     <div class="container">
