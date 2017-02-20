@@ -60,7 +60,7 @@ public class UserRecordsController {
                     method = RequestMethod.POST,
                     produces = MediaType.APPLICATION_JSON_VALUE,
                     consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Clinic> saveClinic(@PathVariable Clinic clinic) {
+    public ResponseEntity<Clinic> saveClinic(@RequestBody Clinic clinic) {
             return delegate.saveClinic(clinic);
     }
 
