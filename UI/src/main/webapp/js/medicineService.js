@@ -2,9 +2,9 @@ app.factory("medicineService", function ($log, $http) {
     var medicines = {};
 
     medicines.allMedicines = function(){
-        $log.debug( serverURL+"/medicine/medicine/all");
+        $log.debug( serverURL+"/medicineapi/medicine/all");
         return $http({
-            url : serverURL+"/medicine/medicine/all",
+            url : serverURL+"/medicineapi/medicine/all",
             method : "GET"
         }).then(function(response) {
             $log.debug("Medicines successfully retrieved");
@@ -17,7 +17,7 @@ app.factory("medicineService", function ($log, $http) {
 
     medicines.getMedicineById = function(id){
         return $http({
-            url: serverURL+"/medicine/medicine/id/"+id,
+            url: serverURL+"/medicineapi/medicine/id/"+id,
             method:"GET"
         }).then(function(response){
             return response.data
@@ -31,7 +31,7 @@ app.factory("medicineService", function ($log, $http) {
         console.log("in Service");
         $log.debug(medicineObj);
         return $http({
-            url: serverURL+"/medicine/medicine/save",
+            url: serverURL+"/medicineapi/medicine/save",
             method: "POST",
             data: medicineObj
         }).then(function (response) {
@@ -46,7 +46,7 @@ app.factory("medicineService", function ($log, $http) {
     medicines.editMedicine = function(medicineObj){
         $log.debug(medicineObj);
         return $http({
-            url: serverURL+"/medicine/medicine/save",
+            url: serverURL+"/medicineapi/medicine/save",
             method: "POST",
             data: medicineObj
         }).then(function (response) {
