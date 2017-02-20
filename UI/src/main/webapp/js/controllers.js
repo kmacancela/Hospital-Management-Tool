@@ -56,8 +56,8 @@ app.controller("medicineController", function ($scope, $log, $q, $route, medicin
     };
 
     $scope.getMedicine = function () {
-        var id = $scope.id;
-        medicineService.getMedicineById(id).then(function(response){
+        var findId = $scope.findId;
+        medicineService.getMedicineById(findId).then(function(response){
             $scope.result=response;
             $log.debug(response);
         });

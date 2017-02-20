@@ -1,15 +1,8 @@
 <div class="container" style="text-align: center; margin: 0 auto;">
     <div ng-controller="medicineController">
-        <div class="row">
-            <div class="col-md-12 col-lg-12">
-                <ul class="nav nav-tabs">
-                    <!-- Button Trigger for Create Batch Modal -->
-                    <li role="button" class="pull-right" data-toggle="modal" data-target="#createMedicineModal">
-                        <a>Create Medicine<span class="glyphicon glyphicon-plus" aria-hidden="true">
-                    </span></a>
-                    </li>
-                </ul>
-            </div>
+        <div style="position: absolute; left: 0px; width: 50%;">
+            <div style="margin: 20px;">
+
     <table id="medicineTable" datatable="ng" class="table table-striped table-bordered" width="100%" role="grid">
         <thead>
         <tr>
@@ -28,8 +21,13 @@
         </tr>
         </tbody>
     </table>
+            </div>
+        </div>
 
+        <div style="position: absolute; right: 0px; width: 50%;">
+            <div style="margin: 20px;">
 
+<!--
 <form class="form-horizontal" role="form" ng-submit="createMedicine()">
     Name: <input type="text" ng-model="name">
     Type: <input type="text" ng-model="type">
@@ -37,26 +35,79 @@
     <input type="submit" value="Submit" class="btn btn-primary"/>
 </form>
 
+<br>-->
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h2 style="color: #555555;">Add/Edit a Medicine</h2>
+                            <form class="form-horizontal" role="form" ng-submit="editMedicine()">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"></span>
+                                    <input ng-model="id" class="form-control" type="text" style="height: 30px" placeholder="Medicine ID">
+                                </div><br>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"></span>
+                                    <input ng-model="name" class="form-control" type="text" style="height: 30px" placeholder="Medicine Name">
+                                </div><br>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"></span>
+                                    <input ng-model="type" class="form-control" type="text" style="height: 30px" placeholder="Medicine Type">
+                                </div><br>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"></span>
+                                    <input ng-model="price" class="form-control" type="text" style="height: 30px" placeholder="Price">
+                                </div><br>
+
+
+<!--                                Medicine ID: <input type="text" ng-model="id">
+                                Name: <input type="text" ng-model="name">
+                                Type: <input type="text" ng-model="type">
+                                Price: <input type="text" ng-model="price">-->
+                                <input type="submit" value="Submit Medicine" class="btn btn-primary btn-lg btn-block"/>
+                            </form>
+                    </div>
+                </div>
+
 <br>
 
-Find By
-<form class="form-horizontal" role="form" ng-submit="getMedicine()">
-    Medicine ID: <input type="text" ng-model="id">
-    <input type="submit" value="Submit" class="btn btn-primary"/>
-</form>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h2 style="color: #555555;">Find a Medicine</h2>
+                <form class="form-horizontal" role="form" ng-submit="getMedicine()">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"></span>
+                        <input ng-model="findId" class="form-control" type="text" style="height: 30px" placeholder="Medicine ID">
+                    </div><br>
+                    <input type="submit" value="Submit Medicine" class="btn btn-primary btn-lg btn-block"/><br>
 
-<br>
 
-Edit medicine
-<form class="form-horizontal" role="form" ng-submit="editMedicine()">
-    Medicine ID: <input type="text" ng-model="id">
-    Name: <input type="text" ng-model="name">
-    Type: <input type="text" ng-model="type">
-    Price: <input type="text" ng-model="price">
-    <input type="submit" value="Submit" class="btn btn-primary"/>
-</form>
+                    <!--Medicine ID: <input type="text" ng-model="id">
+                    <input type="submit" value="Submit" class="btn btn-primary"/>-->
+                </form>
+                        <table class="table table-striped table-bordered" width="100%" role="grid">
+                            <thead>
+                            <tr>
+                                <th class="sorting">Medicine ID</th>
+                                <th class="sorting">Name</th>
+                                <th class="sorting">Type</th>
+                                <th class="sorting">Price</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>{{result.medicineId}}</td>
+                                <td>{{result.name}}</td>
+                                <td>{{result.type}}</td>
+                                <td>{{result.price}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
-<br>
-        </div>
+                <br>
+
 </div>
+</div>
+    </div>
 </div>
