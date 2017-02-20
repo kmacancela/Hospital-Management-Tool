@@ -12,6 +12,7 @@ import java.util.List;
  * Created by Sibrian on 2/16/17.
  */
 @RestController
+@RequestMapping(value = "/clinic")
 public class ClinicController {
 
     private ClinicService clinicService;
@@ -21,7 +22,7 @@ public class ClinicController {
         this.clinicService = clinicService;
     }
 
-    @RequestMapping(value = "/clinic",
+    @RequestMapping(value = "/save",
                 method = RequestMethod.POST,
                 consumes = {MediaType.APPLICATION_JSON_VALUE},
                 produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -36,14 +37,14 @@ public class ClinicController {
         return clinicService.findAll();
     }
 
-    @RequestMapping(value = "/search/{name}",
+    @RequestMapping(value = "/search/name/{name}",
                     method = RequestMethod.GET,
                     produces = {MediaType.APPLICATION_JSON_VALUE})
     public Clinic getClinicByName(@PathVariable String name) {
         return clinicService.findByName(name);
     }
 
-    @RequestMapping(value = "/search/{id}",
+    @RequestMapping(value = "/search/id/{id}",
                     method = RequestMethod.GET,
                     produces = {MediaType.APPLICATION_JSON_VALUE})
     public Clinic getClinicById(@PathVariable int id) {

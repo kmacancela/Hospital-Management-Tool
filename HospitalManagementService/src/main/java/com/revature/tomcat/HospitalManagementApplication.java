@@ -23,6 +23,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -30,12 +33,15 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan
-public class SampleTomcatApplication {
+@SpringBootApplication
+@EnableDiscoveryClient
+@EnableZuulProxy			//forward requests to the service we mention in the request
+public class HospitalManagementApplication {
 
-	private static Log logger = LogFactory.getLog(SampleTomcatApplication.class);
+	private static Log logger = LogFactory.getLog(HospitalManagementApplication.class);
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(SampleTomcatApplication.class, args);
+		SpringApplication.run(HospitalManagementApplication.class, args);
 	}
 
 	@Bean
