@@ -1,4 +1,16 @@
-<div>
+<div class="container" style="text-align: center; margin: 0 auto;">
+    <div ng-controller="medicineController">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <ul class="nav nav-tabs">
+                    <!-- Button Trigger for Create Batch Modal -->
+                    <li role="button" class="pull-right" data-toggle="modal" data-target="#createMedicineModal">
+                        <a>Create Medicine<span class="glyphicon glyphicon-plus" aria-hidden="true">
+                    </span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     <table id="medicineTable" datatable="ng" class="table table-striped table-bordered" width="100%" role="grid">
         <thead>
         <tr>
@@ -47,3 +59,5 @@ Edit patient
 </form>
 
 <br>
+
+</div>

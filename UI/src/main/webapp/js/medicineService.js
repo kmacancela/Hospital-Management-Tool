@@ -1,13 +1,13 @@
-app.factory("patientService", function ($log, $http) {
-    var patients = {};
+app.factory("medicineService", function ($log, $http) {
+    var medicine = {};
 
-    patients.allPatients = function(){
-    	$log.debug( serverURL+"/api/patients/all");
+    medicine.allMedicine = function(){
+        $log.debug( serverURL+"/medicine/medicine/all");
         return $http({
-            url : serverURL+"/api/patients/all",
+            url : serverURL+"/medicine/medicine/all",
             method : "GET"
         }).then(function(response) {
-            $log.debug("Patients successfully retrieved");
+            $log.debug("Medicines successfully retrieved");
             $log.debug(response);
             return response.data;
         }, function(response) {
@@ -15,9 +15,9 @@ app.factory("patientService", function ($log, $http) {
         });
     };
 
-    patients.getPatientById = function(id){
+    medicine.getMedicineById = function(id){
         return $http({
-            url: serverURL+"/api/patients/id/"+id,
+            url: serverURL+"/medicine/medicine/id/"+id,
             method:"GET"
         }).then(function(response){
             return response.data
@@ -26,16 +26,16 @@ app.factory("patientService", function ($log, $http) {
         });
     };
 
-    patients.createPatient = function(patientObj){
-        console.log(patientObj);
+    medicine.createMedicine = function(medicineObj){
+        console.log(medicineObj);
         console.log("in Service");
-        $log.debug(patientObj);
+        $log.debug(medicineObj);
         return $http({
-            url: serverURL+"/api/patients/save",
+            url: serverURL+"/medicine/medicine/save",
             method: "POST",
-            data: patientObj
+            data: medicineObj
         }).then(function (response) {
-            $log.debug("Patient created successfully")
+            $log.debug("Medicine created successfully")
             $log.debug(response);
             return response.data;
         },function(response){
@@ -43,19 +43,19 @@ app.factory("patientService", function ($log, $http) {
         });
     };
 
-    patients.editPatient = function(patientObj){
-        $log.debug(patientObj);
+    medicine.editMedicine = function(medicineObj){
+        $log.debug(medicineObj);
         return $http({
-            url: serverURL+"/api/patient/save",
+            url: serverURL+"/medicine/medicine/save",
             method: "POST",
-            data: patientObj
+            data: medicineObj
         }).then(function (response) {
-            $log.debug("Patient Edited successfully")
+            $log.debug("Medicine Edited successfully")
             return response.data;
         },function(response){
             $log.error("There was an error : " + response.status);
         });
     };
 
-    return patients;
+    return medicine;
 });
