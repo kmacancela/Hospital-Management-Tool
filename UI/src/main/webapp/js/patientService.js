@@ -57,8 +57,5 @@ app.factory("patientService", function ($log, $http) {
         });
     };
 
-
-
-
     return patients;
 });
