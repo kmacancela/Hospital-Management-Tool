@@ -9,16 +9,15 @@ app.controller("patientController", function ($scope, $log, $q, $route, patientS
             });
     })();
     $scope.$route = $route;
+    
+    $scope.selectPatient = function(patient) {
+    	$scope.selectedPatient = patient;
+    }
 
     $scope.editPatient = function() {
-        var patientObj = {
-        	patientId: $scope.patientId,
-            patientFirstName: $scope.patientFirstName,
-            patientLastName: $scope.patientLastName,
-            phoneNumber: $scope.phoneNumber
-        };
-        patientService.createPatient(patientObj).then(function(response){
-            $scope.patients.push(response);
+        patientService.createPatient($scope.selectedPatient).then(function(response){
+            //$scope.patients.push(response);
+            $scope.selectedPatient = null;
         });
     };
 
