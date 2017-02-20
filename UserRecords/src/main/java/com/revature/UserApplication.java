@@ -13,50 +13,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package com.revature.tomcat;
+package com.revature;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 
-@Configuration
-@EnableAutoConfiguration
-@ComponentScan
-@SpringBootApplication
 @EnableDiscoveryClient
-@EnableZuulProxy
-public class SampleTomcatApplication {
-
-	private static Log logger = LogFactory.getLog(SampleTomcatApplication.class);
-
-	public static void main(String[] args) throws Exception {
-		SpringApplication.run(SampleTomcatApplication.class, args);
-	}
-
-	@Bean
-	protected ServletContextListener listener() {
-		return new ServletContextListener() {
-			@Override
-			public void contextInitialized(ServletContextEvent sce) {
-				logger.info("ServletContext initialized");
-			}
-
-			@Override
-			public void contextDestroyed(ServletContextEvent sce) {
-				logger.info("ServletContext destroyed");
-			}
-		};
-	}
-
+@SpringBootApplication
+public class UserApplication {
+    private static Log logger = LogFactory.getLog(UserApplication.class);
+    public static void main(String[] args) throws Exception {
+        SpringApplication.run(UserApplication.class, args);
+    }
+    @Bean
+    protected ServletContextListener listener() {
+        return new ServletContextListener() {
+            @Override
+            public void contextInitialized(ServletContextEvent sce) {
+                logger.info("ServletContext initialized");
+            }
+            @Override
+            public void contextDestroyed(ServletContextEvent sce) {
+                logger.info("ServletContext destroyed");
+            }
+        };
+    }
 }
