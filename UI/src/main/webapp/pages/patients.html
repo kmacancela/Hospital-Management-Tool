@@ -87,6 +87,7 @@
                         <th class="sorting">First Name</th>
                         <th class="sorting">Last Name</th>
                         <th class="sorting">Phone Number</th>
+                        <th class="sorting">Medical History</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -95,6 +96,11 @@
                         <td>{{result.patientFirstName}}</td>
                         <td>{{result.patientLastName}}</td>
                         <td>{{result.phoneNumber}}</td>
+                        <td>
+                        <ul ng-repeat="history in result.medicalHistory">
+                        	<li type="circle">{{history}}</li>
+                        </ul>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

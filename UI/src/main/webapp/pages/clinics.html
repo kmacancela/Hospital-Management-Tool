@@ -15,7 +15,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="clinic in clinics">
+        <tr ng-repeat="clinic in clinics" ng-click="selectClinic(clinic)" role="button">
             <td>{{clinic.clinicId}}</td>
             <td>{{clinic.clinicName}}</td>
             <td>{{clinic.clinicAddress}}</td>
@@ -48,27 +48,27 @@
         <form class="form-horizontal" role="form" ng-submit="editClinic()">
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon1"></span>
-                <input ng-model="clinicId" class="form-control" type="text" style="height: 30px" placeholder="Clinic ID">
+                <input ng-model="selectedClinic.clinicId" class="form-control" type="text" style="height: 30px" placeholder="Clinic ID">
             </div><br>
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon1"></span>
-                <input ng-model="clinicName" class="form-control" type="text" style="height: 30px" placeholder="Clinic Name">
+                <input ng-model="selectedClinic.clinicName" class="form-control" type="text" style="height: 30px" placeholder="Clinic Name">
             </div><br>
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon1"></span>
-                <input ng-model="clinicAddress" class="form-control" type="text" style="height: 30px" placeholder="Address">
+                <input ng-model="selectedClinic.clinicAddress" class="form-control" type="text" style="height: 30px" placeholder="Address">
             </div><br>
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon1"></span>
-                <input ng-model="clinicCity" class="form-control" type="text" style="height: 30px" placeholder="City">
+                <input ng-model="selectedClinic.clinicCity" class="form-control" type="text" style="height: 30px" placeholder="City">
             </div><br>
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon1"></span>
-                <input ng-model="clinicState" class="form-control" type="text" style="height: 30px" placeholder="State">
+                <input ng-model="selectedClinic.clinicState" class="form-control" type="text" style="height: 30px" placeholder="State">
             </div><br>
             <div class="input-group">
                 <span class="input-group-addon" id="basic-addon1"></span>
-                <input ng-model="clinicZip" class="form-control" type="text" style="height: 30px" placeholder="Zip Code">
+                <input ng-model="selectedClinic.clinicZip" class="form-control" type="text" style="height: 30px" placeholder="Zip Code">
             </div><br>
 
 
