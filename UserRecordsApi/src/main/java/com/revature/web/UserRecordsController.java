@@ -81,8 +81,8 @@ public class UserRecordsController {
     @RequestMapping(value = "/clinics/search/id/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Clinic> findClinicById(@PathVariable String id) {
-        return delegate.findClinicByName(id);
+    public ResponseEntity<Clinic> findClinicById(@PathVariable Integer id) {
+        return delegate.findClinicById(id);
     }
 }
 
