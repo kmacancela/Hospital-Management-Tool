@@ -15,11 +15,11 @@ import javax.servlet.ServletContextListener;
  */
 @EnableDiscoveryClient
 @SpringBootApplication
-public class PatientRecordsAPIApplication {
-    private static Log logger = LogFactory.getLog(PatientRecordsAPIApplication.class);
+public class UserRecordsAPIApplication {
+    private static Log logger = LogFactory.getLog(UserRecordsAPIApplication.class);
 
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(PatientRecordsAPIApplication.class, args);
+        SpringApplication.run(UserRecordsAPIApplication.class, args);
     }
 
     @Bean

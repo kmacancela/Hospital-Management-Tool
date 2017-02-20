@@ -7,6 +7,7 @@ import com.revature.beans.Clinic;
 import com.revature.beans.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -17,6 +18,7 @@ import java.util.List;
 /**
  * Created by Sibrian on 2/19/17.
  */
+@Service
 public class UserRecordsService {
 
     private EurekaClient discoveryClient;
