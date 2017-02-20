@@ -74,6 +74,7 @@ public class UserRecordsService {
         RestTemplate restTemplate = new RestTemplate();
 
         Application application = discoveryClient.getApplication("user");
+
         List<InstanceInfo> list = application.getInstances();
 
         InstanceInfo userInstanceInfo = list.get(0);
