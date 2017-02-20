@@ -70,7 +70,7 @@ public class MedicineService {
         InstanceInfo medicineInstanceInfo = list.get(0);
 
         String url = "http://"+ medicineInstanceInfo.getHostName()+":"+medicineInstanceInfo.getPort()+"/";
-        final String URI = UriComponentsBuilder.fromHttpUrl(url).path("medicine/id/").path(id.toString()).build().toString();
+        final String URI = UriComponentsBuilder.fromHttpUrl(url).path("medicine/").path(id.toString()).build().toString();
 
         Medicine medicine = null;
         ResponseEntity<Medicine> response = null;
