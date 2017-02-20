@@ -4,10 +4,14 @@ app.config(function ($locationProvider,$routeProvider, $logProvider) {
     $locationProvider.hashPrefix('');
     $logProvider.debugEnabled(true);
     $routeProvider
-        .when('/',{
+/*        .when('/',{
             templateUrl:'/pages/home.html'
         })
         .when('/patients',{
+            templateUrl:'/pages/patients.html',
+            controller: 'patientController'
+        })*/
+        .when('/',{
             templateUrl:'/pages/patients.html',
             controller: 'patientController'
         })

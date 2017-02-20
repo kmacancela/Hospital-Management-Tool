@@ -1,7 +1,7 @@
 app.factory("medicineService", function ($log, $http) {
-    var medicine = {};
+    var medicines = {};
 
-    medicine.allMedicine = function(){
+    medicines.allMedicines = function(){
         $log.debug( serverURL+"/medicine/medicine/all");
         return $http({
             url : serverURL+"/medicine/medicine/all",
@@ -15,7 +15,7 @@ app.factory("medicineService", function ($log, $http) {
         });
     };
 
-    medicine.getMedicineById = function(id){
+    medicines.getMedicineById = function(id){
         return $http({
             url: serverURL+"/medicine/medicine/id/"+id,
             method:"GET"
@@ -26,7 +26,7 @@ app.factory("medicineService", function ($log, $http) {
         });
     };
 
-    medicine.createMedicine = function(medicineObj){
+    medicines.createMedicine = function(medicineObj){
         console.log(medicineObj);
         console.log("in Service");
         $log.debug(medicineObj);
@@ -43,7 +43,7 @@ app.factory("medicineService", function ($log, $http) {
         });
     };
 
-    medicine.editMedicine = function(medicineObj){
+    medicines.editMedicine = function(medicineObj){
         $log.debug(medicineObj);
         return $http({
             url: serverURL+"/medicine/medicine/save",
@@ -57,5 +57,5 @@ app.factory("medicineService", function ($log, $http) {
         });
     };
 
-    return medicine;
+    return medicines;
 });
