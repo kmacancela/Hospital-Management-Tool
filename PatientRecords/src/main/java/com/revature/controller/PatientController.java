@@ -28,7 +28,6 @@ public class PatientController {
 	@RequestMapping(value="/patient/all",method=RequestMethod.GET,
 			produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Patient>>findAll(){
-		System.out.println("we tried");
 		return new ResponseEntity<List<Patient>>(service.findAll(),HttpStatus.OK);
 	}
 	
