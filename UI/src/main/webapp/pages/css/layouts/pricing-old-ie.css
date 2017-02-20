@@ -51,11 +51,11 @@ p {
  */
 
 .banner {
-    background: transparent url('http://24.media.tumblr.com/ccb268832580ac12951828a1c179de69/tumblr_mo2xbk8JUK1st5lhmo1_1280.jpg') 0 0 no-repeat fixed;
+    background: transparent url('https://dpcintegration.files.wordpress.com/2015/10/adobestock_66020892.jpeg') 0 0 no-repeat fixed;
     text-align: center;
-    background-size: cover;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://24.media.tumblr.com/ccb268832580ac12951828a1c179de69/tumblr_mo2xbk8JUK1st5lhmo1_1280.jpg', sizingMethod='scale');
-    height: 200px;
+/*    background-size: cover;*/
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='https://dpcintegration.files.wordpress.com/2015/10/adobestock_66020892.jpeg');
+/*    height: 200px;*/
     width: 100%;
     margin-bottom: 3em;
     display: table;
@@ -65,7 +65,7 @@ p {
     display: table-cell;
     vertical-align: middle;
     margin-bottom: 0;
-    font-size: 2em;
+/*    font-size: 2em;*/
     color: white;
     font-weight: 500;
     text-shadow: 0 1px 1px black;
@@ -78,7 +78,7 @@ p {
 
 .pricing-tables,
 .information {
-    max-width: 980px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
@@ -104,7 +104,7 @@ p {
  */
 
 .pricing-table-free .pricing-table-header {
-    background: #519251;
+    background: white;
 }
 
 .pricing-table-biz .pricing-table-header {
@@ -121,12 +121,6 @@ p {
     color: #fff;
 }
 
-.pricing-table-header h2 {
-    margin: 0;
-    padding-top: 2em;
-    font-size: 1em;
-    font-weight: normal;
-}
 
 /*
  * -- PRICING TABLE PRICE --
@@ -142,9 +136,9 @@ p {
 .pricing-table-price span {
     display: block;
     text-transform: uppercase;
-    font-size: 0.2em;
+    font-size: 10px;
     padding-bottom: 2em;
-    font-weight: 400;
+    font-weight: 100;
     color: rgba(255, 255, 255, 0.5);
     *color: #fff;
 }
@@ -179,17 +173,17 @@ p {
  */
 
 .button-choose {
-    border: 1px solid #ccc;
+    border:solid #ccc;
     background: #fff;
     color: #333;
-    border-radius: 2em;
+
     font-weight: bold;
     position: relative;
-    bottom: -1.5em;
+
 }
 
 .information-head {
-    color: black;
+    color: white;
     font-weight: 500;
 }
 

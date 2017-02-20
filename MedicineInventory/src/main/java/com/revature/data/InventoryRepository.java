@@ -15,8 +15,6 @@ public interface InventoryRepository extends MongoRepository<Inventory, Integer>
     List<Inventory> findAll();
 
     Inventory findOne(Integer id);
-
-    //void update(Inventory inventoryItem);
 }
 
 

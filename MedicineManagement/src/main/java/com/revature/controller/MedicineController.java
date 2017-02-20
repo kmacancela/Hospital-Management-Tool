@@ -23,7 +23,7 @@ public class MedicineController {
         this.service = service;
     }
 
-    @RequestMapping(value = "/new",
+    @RequestMapping(value = "/save",
                     method = RequestMethod.POST,
                     consumes = MediaType.APPLICATION_JSON_VALUE,
                     produces = MediaType.APPLICATION_JSON_VALUE)
@@ -44,9 +44,4 @@ public class MedicineController {
     public Medicine findOne(@PathVariable(value = "id") Integer id){
         return service.findOne(id);
     }
-
-/*    @RequestMapping(value = "/update")
-    public Medicine update(@RequestBody Medicine medicine){
-        return service.update(medicine);
-    }*/
 }

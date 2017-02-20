@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import com.revature.beans.Patient;
+import com.revature.beans.Prescription;
 import com.revature.beans.Visit;
 import com.revature.service.PatientService;
 
@@ -36,8 +37,32 @@ public class Delegate {
 		return patientService.getVisitById(visitId);
 	}
 	
-	public ResponseEntity<List<Visit>> findVisitByUserId(Integer userId){
+	public ResponseEntity<List<Visit>> findVisitsByUserId(Integer userId){
 		return patientService.findVisitsByPatientId(userId);
 	}
 
+	public ResponseEntity<List<Visit>> findVisitsByPatientId(Integer patientId){
+		return patientService.findVisitsByPatientId(patientId);
+	}
+	
+	public ResponseEntity<Visit> saveVisit(Visit visit){
+		return patientService.saveVisit(visit);
+	}
+	
+	public ResponseEntity<Prescription> findPrescriptionById(Integer prescriptionId){
+		return patientService.findPrescriptionById(prescriptionId);
+	}
+	
+	public ResponseEntity<List<Prescription>> findPrescriptionsByUserId(Integer userId){
+		return patientService.findPrescriptionsByUserId(userId);
+	}
+	
+	public ResponseEntity<List<Prescription>> findPrescriptionsByPatientId(Integer patientId){
+		return patientService.findPrescriptionsByPatientId(patientId);
+	}
+	
+	public ResponseEntity<Prescription> savePrescription(Prescription prescription){
+		return patientService.savePrescription(prescription);
+	}
+ 	
 }

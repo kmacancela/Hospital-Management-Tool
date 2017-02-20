@@ -49,4 +49,10 @@ public class PrescriptionController {
 	public Prescription savePrescription(@RequestBody Prescription prescription){
 		return service.save(prescription);
 	}
+	
+	@RequestMapping(value="/prescription/delete/{prescriptionId}",method=RequestMethod.DELETE)
+	public ResponseEntity<Prescription> deletePrescription(@PathVariable Integer prescriptionId){
+		service.deletePrescription(prescriptionId);
+		return new ResponseEntity<Prescription>(HttpStatus.OK);
+	}
 }

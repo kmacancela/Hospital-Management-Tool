@@ -1,0 +1,68 @@
+<div ng-controller="patientController">
+    <table id="patientTable" datatable="ng" class="table table-striped table-bordered" width="100%" role="grid">
+        <thead>
+        <tr>
+            <th class="sorting">Patient ID</th>
+            <th class="sorting">First Name</th>
+            <th class="sorting">Last Name</th>
+            <th class="sorting">Phone Number</th>
+            <th class=sorting">Medical History</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="patient in patients">
+            <td>{{patient.patientId}}</td>
+            <td>{{patient.patientFirstName}}</td>
+            <td>{{patient.patientLastName}}</td>
+            <td>{{patient.phoneNumber}}</td>
+            <td>{{patient.pastVisits}}</td>
+        </tr>
+        </tbody>
+    </table>
+<form class="form-horizontal" role="form" ng-submit="createPatient()">
+    First Name: <input type="text" ng-model="firstName">
+    Last Name: <input type="text" ng-model="lastName">
+    Phone Number: <input type="text" ng-model="phoneNumber">
+    <input type="submit" value="Submit" class="btn btn-primary"/>
+</form>
+
+<br>
+
+Find By
+<form class="form-horizontal" role="form" ng-submit="getPatient()">
+    Patient ID: <input type="text" ng-model="id">
+    <input type="submit" value="Submit" class="btn btn-primary"/>
+</form>
+<table class="">
+        <thead>
+        <tr>
+            <th class="sorting">Patient ID</th>
+            <th class="sorting">First Name</th>
+            <th class="sorting">Last Name</th>
+            <th class="sorting">Phone Number</th>
+            <th class=sorting">Medical History</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{result.patientId}}</td>
+            <td>{{result.patientFirstName}}</td>
+            <td>{{result.patientLastName}}</td>
+            <td>{{result.phoneNumber}}</td>
+            <td>{{result.pastVisits}}</td>
+        </tr>
+        </tbody>
+</table>
+<br>
+
+Edit patient
+<form class="form-horizontal" role="form" ng-submit="editPatient()">
+    Patient ID: <input type="text" ng-model="patientId">
+    First Name: <input type="text" ng-model="patientFirstName">
+    Last Name: <input type="text" ng-model="patientLastName">
+    Phone Number: <input type="text" ng-model="phoneNumber">
+    <input type="submit" value="Submit" class="btn btn-primary"/>
+</form>
+
+<br>
+</div>

@@ -15,8 +15,8 @@ public interface PrescriptionRepository extends MongoRepository<Prescription, In
 	List<Prescription> findByPatientId(int patientId);
 	
 	List<Prescription> findByUserId(int userId);
+		
+	void delete(Integer prescriptionId);
 	
-	//TODO add delete
 
-	//TODO add create
 }

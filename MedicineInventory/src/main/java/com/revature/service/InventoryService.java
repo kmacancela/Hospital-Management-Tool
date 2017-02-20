@@ -32,8 +32,4 @@ public class InventoryService {
     public Inventory findOne(Integer id){
         return repository.findOne(id);
     }
-
-    /*public void update(Inventory inventoryItem) {
-        repository.update(inventoryItem);
-    }*/
 }
