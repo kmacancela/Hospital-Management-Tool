@@ -1,13 +1,13 @@
-app.factory("patientService", function ($log, $http) {
-    var patients = {};
+app.factory("clinicService", function ($log, $http) {
+    var clinic = {};
 
-    patients.allPatients = function(){
-    	$log.debug( serverURL+"/api/patients/all");
+    clinic.allClinic = function(){
+        $log.debug( serverURL+"/clinic/clinic/all");
         return $http({
-            url : serverURL+"/api/patients/all",
+            url : serverURL+"/clinic/clinic/all",
             method : "GET"
         }).then(function(response) {
-            $log.debug("Patients successfully retrieved");
+            $log.debug("Clinics successfully retrieved");
             $log.debug(response);
             return response.data;
         }, function(response) {
@@ -15,9 +15,9 @@ app.factory("patientService", function ($log, $http) {
         });
     };
 
-    patients.getPatientById = function(id){
+    clinic.getClinicById = function(id){
         return $http({
-            url: serverURL+"/api/patients/id/"+id,
+            url: serverURL+"/clinic/clinic/id/"+id,
             method:"GET"
         }).then(function(response){
             return response.data
@@ -26,16 +26,16 @@ app.factory("patientService", function ($log, $http) {
         });
     };
 
-    patients.createPatient = function(patientObj){
-        console.log(patientObj);
+    clinic.createClinic = function(clinicObj){
+        console.log(clinicObj);
         console.log("in Service");
-        $log.debug(patientObj);
+        $log.debug(clinicObj);
         return $http({
-            url: serverURL+"/api/patients/save",
+            url: serverURL+"/clinic/clinic/save",
             method: "POST",
-            data: patientObj
+            data: clinicObj
         }).then(function (response) {
-            $log.debug("Patient created successfully")
+            $log.debug("Clinic created successfully")
             $log.debug(response);
             return response.data;
         },function(response){
@@ -43,19 +43,19 @@ app.factory("patientService", function ($log, $http) {
         });
     };
 
-    patients.editPatient = function(patientObj){
-        $log.debug(patientObj);
+    clinic.editMedicine = function(clinicObj){
+        $log.debug(clinicObj);
         return $http({
-            url: serverURL+"/api/patient/save",
+            url: serverURL+"/clinic/clinic/save",
             method: "POST",
-            data: patientObj
+            data: clinicObj
         }).then(function (response) {
-            $log.debug("Patient Edited successfully")
+            $log.debug("Clinic Edited successfully")
             return response.data;
         },function(response){
             $log.error("There was an error : " + response.status);
         });
     };
 
-    return patients;
+    return clinic;
 });

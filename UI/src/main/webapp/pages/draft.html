@@ -1,167 +1,262 @@
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospital Central</title>
 
-    <link rel="stylesheet"
-    	href="https://unpkg.com/purecss@0.6.2/build/pure-min.css"
-    	integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD"
-    	crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-old-ie-min.css">
-    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
-    <link rel="stylesheet" href="css/layouts/pricing-old-ie.css">
-    <link rel="stylesheet" href="css/layouts/pricing.css">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
-    <script async="" src="//www.google-analytics.com/analytics.js"></script>
+<!doctype html>
+<html lang="en" ng-app="ofsApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-     <link rel="stylesheet"
-           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-           crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/style.css">
+
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.js"
+            integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+            crossorigin="anonymous"></script>
+
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <!--Need for styled text fields-->
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css">
-    <!--Need for styled calendar-->
-    <link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2708/bootstrap-datetimepicker.min.css">
-    <!--Need for NavBar-->
-    <!--Need for calendar to popup-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <!--Need for time to popup within calendar-->
-    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
-    <!--Need for calendar to be clickable-->
-    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2708/bootstrap-datetimepicker.min.js"></script>
-    <!--Need for Font Awesome -->
-    <script src="https://use.fontawesome.com/1b8f96a0db.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <!--jQuery-->
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js"></script>
 
- <!--  <script>
-     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.bootstrap.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-datatables/0.6.0/angular-datatables.js"></script>
+    <script src="scripts/configuration.js"></script>
+    <script src="scripts/customerService.js"></script>
+    <script src="scripts/installationService.js"></script>
+    <script src="scripts/inventoryService.js"></script>
+    <script src="scripts/productService.js"></script>
+    <script src="scripts/catalogService.js"></script>
+    <script src="scripts/orderService.js"></script>
+    <script src="scripts/productService.js"></script>
+    <script src="scripts/controllers.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        angular.element(document).ready(function () {
+            angular.element('#ordersTable').DataTable({
+                lengthChange: false,
+                buttons: ['copy', 'excel', 'pdf', 'colvis']
+            }).buttons().container()
+                .appendTo('#example_wrapper .col-sm-6:eq(0)');
+            angular.element('#customerTable').DataTable();
+            angular.element('#catalogTable').DataTable();
+        });
+        $(document).ready(function() {
+            $('#ordersTable').DataTable();
+            $('#customerTable').DataTable();
+            $('#installationTable').DataTable();
+        } );
+    </script>
 
-    ga('create', 'UA-41480445-1', 'purecss.io');
-    ga('send', 'pageview');
-	</script> -->
-
-	<style>
-        img.resize{
-            max-width:10%;
-            max-height:10%;
-        }
-
-        .topleft {
-            position: fixed;
-            top: 8px;
-            left: -250px;
-        }
-    </style>
+    <title>Document</title>
 </head>
-<body>
-<!-- <div class="pure-menu pure-menu-horizontal">
-    <a href="#" class="pure-menu-heading">Your Logo</a>
-    <ul class="pure-menu-list">
-        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Home</a></li>
-        <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Pricing</a></li>
-        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Contact</a></li>
-    </ul>
-</div> -->
-
-<!-- <div class="navbar">
-        <div class="navbar-inner">
-            <div class="container">
-                <ul class="nav">
-                    <li><a class="brand">Hospital Central</a></li>
-                    <li>
-                        <a href="#">Patient Portal</a>
-                    </li>
-                    <li>
-                        <a href="#">Medicine Portal</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li role="presentation">
-                        <button onClick="logout()" class="btn btn-primary" style="margin-top: 5px;
-                            margin-right:-40px" value="Logout">Refresh</button>
-                    </li>
-                </ul>
-            </div>
+<body ng-controller="orderController">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">OFS</a>
         </div>
-    </div> -->
-
-<div class="banner">
-    <h1 class="banner-head">
-        <div class="topleft">
-            <img src="http://s3.amazonaws.com/systemgravatars/avatar_6225.jpg" class="img-circle resize">
-            <span class="caret" style="display:inline-block;line-height:66px;vertical-align:middle;border-top: solid white;"></span>
-
-
-            <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+        <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li ng-class="{active: $route.current.activeTab == 'orders'}"><a href="#">Orders</a></li>
+                <li ng-class="{active: $route.current.activeTab == 'catalog'}"><a href="#catalog">Catalog</a></li>
+                <li ng-class="{active: $route.current.activeTab == 'customers'}"><a href="#customers">Customers</a></li>
             </ul>
-
+            <ul class="nav navbar-nav navbar-right">
+                <button class="btn btn-success navbar-btn" ng-click="ordersModal()" data-toggle="modal"
+                        data-target="#orderModal">Create Order
+                </button>
+            </ul>
         </div>
-        Welcome Frank!<br>
-        Pick the portal you wish to visit.
-    </h1>
+    </div>
+</nav>
+<div id="mainContent">
+    <div ng-view></div>
 </div>
+<footer class="footer">
+    Order Fulfillment System ®
+</footer>
 
-<div class="l-content">
-    <div class="pricing-tables pure-g">
-        <div class="pure-u-1 pure-u-md-1-2">
-            <div class="pricing-table pricing-table-free">
-                <div class="pricing-table-header">
-                    <br><h3 class="information-head">Patient<br>Portal</h3><br>
-                </div>
-
-              	<ul class="pricing-table-list">
-                    <li><a href = "#"><button class="button-choose pure-button">Add a new patient</button></a></li>
-                    <li><a href = "#"><button class="button-choose pure-button">Update a patient</button></a></li>
-                    <li><a href = "#"><button class="button-choose pure-button">Search for a patient</button></a></li>
-                </ul>
+<!--Create Order modal-->
+<div id="orderModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Create Order</h4>
             </div>
-        </div>
-
-        <div class="pure-u-1 pure-u-md-1-2">
-            <div class="pricing-table pricing-table-biz pricing-table-selected">
-                <div class="pricing-table-header">
-                    <br><h3 class="information-head">Medicine<br>Portal</h3><br>
+            <div class="modal-body">
+                <!--Select customer-->
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <h5>Select Customer</h5>
+                        <hr/>
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                            <input type="text" class="form-control" placeholder="Search" ng-model="searchCustomer">
+                        </div>
+                        <br>
+                        <div class="panel panel-success" ng-show="selectedCustomer" ng-hide="!selectedCustomer">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">{{selectedCustomer.firstName}} {{selectedCustomer.lastName}}
+                                    <span>
+                                        <button type="button" class="btn btn-xs btn-danger"
+                                                ng-click="unSelectCustomer(customer)">
+                                        Remove
+                                    </button>
+                                    </span>
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <b>Company: </b>{{selectedCustomer.companyName}}
+                                <br>
+                                <b>Billing Address: </b>{{selectedCustomer.billingAddress}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <div class="panel panel-primary"
+                             ng-repeat="customer in customers | filter:searchCustomer | limitTo:3 | orderBy:'firstName'">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">{{customer.firstName}} {{customer.lastName}}
+                                    <span>
+                                        <button type="button" class="btn btn-xs btn-success"
+                                                ng-click="selectCustomer(customer)">
+                                        Select
+                                    </button>
+                                    </span>
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <b>Company: </b>{{customer.companyName}}
+                                <br>
+                                <b>Billing Address: </b>{{customer.billingAddress}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <hr/>
+                <!--Add products-->
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pre-scrollable">
+                        <h5>Add Products</h5>
+                        <hr/>
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-barcode"></span></span>
+                            <input type="text" class="form-control" placeholder="Search" ng-model="searchProducts">
+                        </div>
+                        <br>
+                        <div class="panel panel-success" ng-show="selectedProducts"
+                             ng-hide="!selectedProducts || selectedProducts.length==0">
+                            <table class="table table-hover">
+                                <thead>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Limit</th>
+                                <th>Quantity</th>
+                                <th></th>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="selectedProduct in selectedProducts track by $index">
+                                    <td>{{selectedProduct.name}}</td>
+                                    <td>{{selectedProduct.price | currency : '$' : 2}}</td>
+                                    <td ng-repeat="inventoryItem in inventory | filter:selectedProduct.id:true">
+                                        {{inventoryItem.quantity}}
+                                    </td>
+                                    <td width="5px"><input type="number" class="form-control" id={{selectedProduct.id}} value="1"></td>
+                                    <td width="5px">
+                                        <button ng-click="removeFromSelectedProducts($index)"
+                                                class="btn btn-danger btn-xs"><span
+                                                class="glyphicon glyphicon-remove"></span></button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <button ng-repeat="product in products | filter:searchProducts | limitTo:50"
+                                type="button" class="btn btn-info" ng-click="addToSelectedProducts(product)">
+                            {{product.name}} : {{product.price | currency : '$' : 2}}
+                        </button>
+                    </div>
+                </div>
+                <hr/>
+                <!--Select installation address-->
+                <div class="row" ng-show="selectedCustomer" ng-hide="!selectedCustomer">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <h5>Select Installation for Customer</h5>
+                        <hr/>
+                        <div class="panel panel-success" ng-show="selectedInstallation" ng-hide="!selectedInstallation">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Selected Installation
+                                    <span>
+                                        <button type="button" class="btn btn-xs btn-danger"
+                                                ng-click="unSelectInstallation(selectedInstallation)">
+                                        Remove
+                                    </button>
+                                    </span>
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <b>Address: </b>{{selectedInstallation.address}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <div class="panel panel-primary"
+                             ng-repeat="installation in installations | filter:searchInstallation | limitTo:5">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">{{installation.address}}
+                                    <span>
+                                        <button type="button" class="btn btn-xs btn-success"
+                                                ng-click="selectInstallation(installation)">
+                                        Select
+                                    </button>
+                                    </span>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <!--Write a description-->
+                <textarea class="form-control" ng-model="orderDescription" placeholder="Other details about the order"></textarea>
 
-                <ul class="pricing-table-list">
-                    <li><a href = "#"><button class="button-choose pure-button">Add a new medicine</button></a></li>
-                    <li><a href = "#"><button class="button-choose pure-button">Update a medicine</button></a></li>
-                    <li><a href = "#"><button class="button-choose pure-button">Search for a medicine</button></a></li>
-                </ul>
-
-
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="createOrder()" data-dismiss="modal">Create</button>
             </div>
         </div>
     </div>
-</div> <!-- end l-content -->
-
-<!--<img src="http://s3.amazonaws.com/systemgravatars/avatar_6225.jpg" class="img-circle resize">-->
-
-<div class="footer l-box">
-    <p>
-        <a href="#">Contact Us</a> | <a href="#">Logout</a>
-    </p>
 </div>
 
 
 
-
-
-</body></html>
+</body>
+</html>
