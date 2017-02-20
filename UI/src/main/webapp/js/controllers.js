@@ -18,7 +18,7 @@ app.controller("patientController", function ($scope, $log, $q, $route, patientS
             phoneNumber: $scope.phoneNumber
         };
         patientService.createPatient(patientObj).then(function(response){
-            $scope.patients = response;
+            $scope.patients.push(response);
         });
     };
 

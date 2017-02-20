@@ -86,15 +86,64 @@ public class MedicineService {
     }
 
     //************************************Inventory Code ***************************************************//
-    public Inventory saveInventory(Inventory inventoryItem){
-        return null;
+    public ResponseEntity<Inventory> saveInventory(Inventory inventory){
+        RestTemplate restTemplate = new RestTemplate();
+        Application application = discoveryClient.getApplication("inventory");
+        List<InstanceInfo> list = application.getInstances();
+
+        InstanceInfo inventoryInstanceInfo = list.get(0);
+
+        String url = "http://"+inventoryInstanceInfo.getHostName()+":"+inventoryInstanceInfo.getPort()+"/";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Inventory> response = new HttpEntity<Inventory>(inventory,headers);
+        final String URI = UriComponentsBuilder.fromHttpUrl(url).path("inventory/save").build().toString();
+        ResponseEntity<Inventory> inventoryResponse = restTemplate.exchange(URI, HttpMethod.POST, response, Inventory.class);
+        return inventoryResponse;
     }
 
-    public List<Inventory> findAllInventory(){
-        return null;
+    public ResponseEntity<List<Inventory>> findAllInventory(){
+        RestTemplate restTemplate = new RestTemplate();
+        Application application = discoveryClient.getApplication("inventory");
+        List<InstanceInfo> list = application.getInstances();
+
+        InstanceInfo inventoryInstanceInfo = list.get(0);
+        String url = "http://"+inventoryInstanceInfo.getHostName()+":"+inventoryInstanceInfo.getPort()+"/";
+        final String URI = UriComponentsBuilder.fromHttpUrl(url).path("inventory/all").build().toString();
+        ResponseEntity<Inventory[]> response = null;
+        List<Inventory> inventory = new ArrayList<Inventory>();
+
+        try{
+            response = restTemplate.getForEntity(URI, Inventory[].class);
+            inventory = Arrays.asList(response.getBody());
+        }catch(RuntimeException e){
+            response = new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<List<Inventory>>(inventory,HttpStatus.OK);
     }
 
-    public Inventory findInventoryById(Integer id){
-        return null;
+    public ResponseEntity<Inventory> findInventoryById(Integer id){
+        RestTemplate restTemplate = new RestTemplate();
+
+        Application application = discoveryClient.getApplication("inventory");
+        List<InstanceInfo> list = application.getInstances();
+
+        InstanceInfo inventoryInstanceInfo = list.get(0);
+
+        String url = "http://"+ inventoryInstanceInfo.getHostName()+":"+inventoryInstanceInfo.getPort()+"/";
+        final String URI = UriComponentsBuilder.fromHttpUrl(url).path("inventory/id/").path(id.toString()).build().toString();
+
+        Inventory inventory = null;
+        ResponseEntity<Inventory> response = null;
+
+        try{
+            response= restTemplate.getForEntity(URI, Inventory.class);
+            inventory = response.getBody();
+        }
+        catch(RuntimeException e){
+            response = new ResponseEntity<Inventory>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<Inventory>(inventory,HttpStatus.OK);
     }
 }
