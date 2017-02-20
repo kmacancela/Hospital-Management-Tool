@@ -27,8 +27,12 @@
     <script type="text/javascript" src="js/routeConfig.js"></script>
     <script type="text/javascript" src="js/controllers.js"></script>
     <script type="text/javascript" src=js/patientService.js></script>
+    <script type="text/javascript" src=js/medicineService.js></script>
+    <script type="text/javascript" src=js/clinicService.js></script>
+
+
 </head>
-<body ng-controller="patientController">
+<body>
 <!-- NAV BAR -->
 <nav class="navbar navbar-default">
     <div class="container">
@@ -45,16 +49,15 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#patients">Patients</a></li>
+                <li><a href="#">Patients</a></li>
                 <li><a href="#medicine">Medicine</a></li>
                 <li><a href="#clinics">Clinics</a></li>
             </ul>
         </div>
     </div>
 </nav>
-<div class="col-md-6 container" id="mainContent" ng-view>
-    <!-- Angular Route can inject a view here -->
+<div id="mainContent">
+    <div ng-view></div>
 </div>
 </body>
 </html>

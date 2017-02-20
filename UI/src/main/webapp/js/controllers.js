@@ -32,13 +32,13 @@ app.controller("patientController", function ($scope, $log, $q, $route, patientS
 });
 
 app.controller("medicineController", function ($scope, $log, $q, $route, medicineService) {
-    var medicine = {};
+    var medicines = {};
 
     (function start() {
-        medicineService.allMedicine().then(
-            function (medicine) {
-                $scope.medicine = medicine;
-                $log.debug(medicine);
+        medicineService.allMedicines().then(
+            function (medicines) {
+                $scope.medicines = medicines;
+                $log.debug(medicines);
             });
     })();
     $scope.$route = $route;
@@ -51,13 +51,13 @@ app.controller("medicineController", function ($scope, $log, $q, $route, medicin
             price: $scope.price
         };
         medicineService.createMedicine(medicineObj).then(function(response){
-            $scope.medicine.push(response);
+            $scope.medicines.push(response);
         });
     };
 
     $scope.getMedicine = function () {
-        var id = $scope.id;
-        medicineService.getMedicineById(id).then(function(response){
+        var findId = $scope.findId;
+        medicineService.getMedicineById(findId).then(function(response){
             $scope.result=response;
             $log.debug(response);
         });
@@ -65,13 +65,13 @@ app.controller("medicineController", function ($scope, $log, $q, $route, medicin
 });
 
 app.controller("clinicController", function ($scope, $log, $q, $route, clinicService) {
-    var clinic = {};
+    var clinics = {};
 
     (function start() {
-        clinicService.allClinic().then(
-            function (clinic) {
-                $scope.clinic = clinic;
-                $log.debug(clinic);
+        clinicService.allClinics().then(
+            function (clinics) {
+                $scope.clinics = clinics;
+                $log.debug(clinics);
             });
     })();
     $scope.$route = $route;
@@ -86,7 +86,7 @@ app.controller("clinicController", function ($scope, $log, $q, $route, clinicSer
             clinicZip: $scope.clinicZip
         };
         clinicService.createClinic(clinicObj).then(function(response){
-            $scope.clinic.push(response);
+            $scope.clinics.push(response);
         });
     };
 

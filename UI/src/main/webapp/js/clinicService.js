@@ -1,10 +1,10 @@
 app.factory("clinicService", function ($log, $http) {
-    var clinic = {};
+    var clinics = {};
 
-    clinic.allClinic = function(){
-        $log.debug( serverURL+"/clinic/clinic/all");
+    clinics.allClinics = function(){
+        $log.debug( serverURL+"/records/clinic/getAll");
         return $http({
-            url : serverURL+"/clinic/clinic/all",
+            url : serverURL+"/records/clinic/getAll",
             method : "GET"
         }).then(function(response) {
             $log.debug("Clinics successfully retrieved");
@@ -15,9 +15,9 @@ app.factory("clinicService", function ($log, $http) {
         });
     };
 
-    clinic.getClinicById = function(id){
+    clinics.getClinicById = function(id){
         return $http({
-            url: serverURL+"/clinic/clinic/id/"+id,
+            url: serverURL+"/records/clinic/search/id/"+id,
             method:"GET"
         }).then(function(response){
             return response.data
@@ -26,12 +26,12 @@ app.factory("clinicService", function ($log, $http) {
         });
     };
 
-    clinic.createClinic = function(clinicObj){
+    clinics.createClinic = function(clinicObj){
         console.log(clinicObj);
         console.log("in Service");
         $log.debug(clinicObj);
         return $http({
-            url: serverURL+"/clinic/clinic/save",
+            url: serverURL+"/records/clinic/save",
             method: "POST",
             data: clinicObj
         }).then(function (response) {
@@ -43,10 +43,10 @@ app.factory("clinicService", function ($log, $http) {
         });
     };
 
-    clinic.editMedicine = function(clinicObj){
+    clinics.editMedicine = function(clinicObj){
         $log.debug(clinicObj);
         return $http({
-            url: serverURL+"/clinic/clinic/save",
+            url: serverURL+"/records/clinic/save",
             method: "POST",
             data: clinicObj
         }).then(function (response) {
@@ -57,5 +57,5 @@ app.factory("clinicService", function ($log, $http) {
         });
     };
 
-    return clinic;
+    return clinics;
 });
