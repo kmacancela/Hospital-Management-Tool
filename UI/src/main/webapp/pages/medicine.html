@@ -13,7 +13,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="medicine in medicines">
+        <tr ng-repeat="medicine in medicines" ng-click="selectMedicine(medicine)" role="button">
             <td>{{medicine.medicineId}}</td>
             <td>{{medicine.name}}</td>
             <td>{{medicine.type}}</td>
@@ -43,19 +43,19 @@
                             <form class="form-horizontal" role="form" ng-submit="editMedicine()">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1"></span>
-                                    <input ng-model="medicineId" class="form-control" type="text" style="height: 30px" placeholder="Medicine ID">
+                                    <input ng-model="selectedMedicine.medicineId" class="form-control" type="text" style="height: 30px" placeholder="Medicine ID">
                                 </div><br>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1"></span>
-                                    <input ng-model="name" class="form-control" type="text" style="height: 30px" placeholder="Medicine Name">
+                                    <input ng-model="selectedMedicine.name" class="form-control" type="text" style="height: 30px" placeholder="Medicine Name">
                                 </div><br>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1"></span>
-                                    <input ng-model="type" class="form-control" type="text" style="height: 30px" placeholder="Medicine Type">
+                                    <input ng-model="selectedMedicine.type" class="form-control" type="text" style="height: 30px" placeholder="Medicine Type">
                                 </div><br>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1"></span>
-                                    <input ng-model="price" class="form-control" type="text" style="height: 30px" placeholder="Price">
+                                    <input ng-model="selectedMedicine.price" class="form-control" type="text" style="height: 30px" placeholder="Price">
                                 </div><br>
 
 

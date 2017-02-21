@@ -42,15 +42,14 @@ app.controller("medicineController", function ($scope, $log, $q, $route, medicin
     })();
     $scope.$route = $route;
 
+    $scope.selectMedicine = function(medicine) {
+        $scope.selectedMedicine = medicine;
+    }
+
     $scope.editMedicine = function() {
-        var medicineObj = {
-            medicineId: $scope.medicineId,
-            name: $scope.name,
-            type: $scope.type,
-            price: $scope.price
-        };
-        medicineService.createMedicine(medicineObj).then(function(response){
-            $scope.medicines.push(response);
+        medicineService.createMedicine($scope.selectedMedicine).then(function(response) {
+            //$scope.patients.push(response);
+            $scope.selectedMedicine = null;
         });
     };
 
