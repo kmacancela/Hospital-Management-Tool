@@ -28,6 +28,13 @@ app.controller("patientController", function ($scope, $log, $q, $route, patientS
             $log.debug(response);
         });
     };
+    
+    $scope.getVisitsOfPatient = function(){
+    	var id = $scope.id;
+    	patientService.getVisitsByPatientId(id).then(function(response){
+    		$scope.visits=response;
+    	})
+    }
 });
 
 app.controller("medicineController", function ($scope, $log, $q, $route, medicineService) {
@@ -74,18 +81,15 @@ app.controller("clinicController", function ($scope, $log, $q, $route, clinicSer
             });
     })();
     $scope.$route = $route;
+    
+    $scope.selectClinic = function(clinic) {
+    	$scope.selectedClinic = clinic;
+    }
 
     $scope.editClinic = function() {
-        var clinicObj = {
-            clinicId: $scope.clinicId,
-            clinicName: $scope.clinicName,
-            clinicCity: $scope.clinicCity,
-            clinicState: $scope.clinicState,
-            clinicAddress: $scope.clinicAddress,
-            clinicZip: $scope.clinicZip
-        };
-        clinicService.createClinic(clinicObj).then(function(response){
-            $scope.clinics.push(response);
+        clinicService.createClinic($scope.selectedClinic).then(function(response){
+            $scope.selectedClinic = null;
+            //$scope.clinics.push(response);
         });
     };
 
