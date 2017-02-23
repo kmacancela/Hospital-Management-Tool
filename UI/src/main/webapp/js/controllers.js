@@ -28,6 +28,13 @@ app.controller("patientController", function ($scope, $log, $q, $route, patientS
             $log.debug(response);
         });
     };
+    
+    $scope.getVisitsOfPatient = function(){
+    	var id = $scope.id;
+    	patientService.getVisitsByPatientId(id).then(function(response){
+    		$scope.visits=response;
+    	})
+    }
 });
 
 app.controller("medicineController", function ($scope, $log, $q, $route, medicineService) {

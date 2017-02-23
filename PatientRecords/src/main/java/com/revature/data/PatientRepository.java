@@ -18,6 +18,4 @@ public interface PatientRepository extends MongoRepository<Patient, Integer>{
 	@Override
 	<S extends Patient> S save(S patient);
 	
-	//TODO add delete
-
 }

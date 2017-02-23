@@ -68,7 +68,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <h2 style="color: #555555;">Find a Patient</h2>
-                <form class="form-horizontal" role="form" ng-submit="getPatient()">
+                <form class="form-horizontal" role="form" ng-submit="getPatient();getVisitsOfPatient()">
 
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1"></span>
@@ -101,6 +101,25 @@
                         	<li type="circle">{{history}}</li>
                         </ul>
                         </td>
+                    </tr>
+                    </tbody>
+                </table>
+                
+                                <table class="table table-striped table-bordered" width="100%" role="grid">
+                    <thead>
+                    <tr>
+                        <th class="sorting">Visit Id</th>
+                        <th class="sorting">Visit Date</th>
+                        <th class="sorting">Visit Reason</th>
+                        <th class="sorting">Diagnosis</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="visit in visits">
+                        <td>{{visit.visitId}}</td>
+                        <td>{{visit.date}}</td>
+                        <td>{{visit.visitReason}}</td>
+                        <td>{{visit.diagnosis}}</td>
                     </tr>
                     </tbody>
                 </table>
