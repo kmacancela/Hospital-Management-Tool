@@ -25,6 +25,17 @@ app.factory("patientService", function ($log, $http) {
             $log.response("There was an error: " + response.status);
         });
     };
+    
+    patients.getVisitsByPatientId = function(id){
+    	return $http({
+    		url: serverURL+"/api/visits/patient/"+id,
+    		method:"GET"
+    	}).then(function(response){
+    		return response.data
+    	},function (response){
+            $log.response("There was an error: " + response.status);
+    	});
+    }
 
     patients.createPatient = function(patientObj){
         console.log(patientObj);
