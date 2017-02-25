@@ -1,0 +1,7 @@
+FROM java:8
+VOLUME /tmp
+ADD ./wait-for-it.sh wait-for-it.sh
+ADD ./target/zuulgateway-0.0.1-SNAPSHOT.jar zuulgateway.jar
+RUN bash -c 'touch /zuulgateway.jar'
+CMD ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/zuulgateway.jar"]
+EXPOSE 8765
