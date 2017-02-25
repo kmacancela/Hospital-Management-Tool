@@ -1,10 +1,11 @@
 version: '2'
 services:
   mongodb:
-    container_name: customer-datastore
+    container_name: mongodb
     image: mongo:3.2
     command: mongod --smallfiles
-
+    ports: 
+      - "12333:12333"
   Eureka:
     container_name: Eureka
     build: ./Eureka
@@ -23,7 +24,7 @@ services:
     build: ./PatientAPI
     depends_on:
       - "Eureka"
-    image: patientApi-service
+    image: patientapi-service
     volumes:
       - ./apigateway:/app
     hostname: api
