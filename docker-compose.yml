@@ -1,0 +1,35 @@
+version: '2'
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:3.2
+    command: mongod --smallfiles
+    ports: 
+      - "12333:12333"
+  Eureka:
+    container_name: Eureka
+    build: ./Eureka
+    depends_on:
+      - "mongodb"
+    image: eureka-service
+    links:
+      - "mongodb"
+    hostname: Eureka
+    ports: 
+      - "8761:8761"
+    
+  
+  api:
+    container_name: api
+    build: ./PatientAPI
+    depends_on:
+      - "Eureka"
+    image: patientapi-service
+    volumes:
+      - ./apigateway:/app
+    hostname: api
+    links:
+      - mongodb:mongodb
+      - Eureka:Eureka
+    ports: 
+      - "12355:12355"
