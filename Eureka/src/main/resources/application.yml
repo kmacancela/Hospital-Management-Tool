@@ -1,11 +1,21 @@
-server.port = 8761
+#server.port = 8761
+#
+#spring.application.name = eureka-service
+#
+#eureka.client.register-with-eureka=false
+#
+#eureka.client.fetch-registry=false
+#
+#logging.level.com.netflix.eureka=OFF
+#
+#logging.level.com.netflix.discovery=OFF
 
-spring.application.name = eureka-service
+server:
+  port: 8761
 
-eureka.client.register-with-eureka=false
-
-eureka.client.fetch-registry=false
-
-logging.level.com.netflix.eureka=OFF
-
-logging.level.com.netflix.discovery=OFF
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+enableSelfPreservation: false
