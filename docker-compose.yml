@@ -4,11 +4,16 @@ services:
     container_name: mongodb
     image: mongo:3.2
     command: mongod --smallfiles
+    volumes:
+      - "db-data:/opt/mongo/data"
+    hostname: mongodb
     ports: 
-      - "12333:12333"
+      - "27017:27017"
+      
   Eureka:
     container_name: Eureka
     build: ./Eureka
+    command: ["./wait-for-it.sh", "-t", "0", "mongodb:27017", "--", "java","-Djava.security.egd=file:/dev/./urandom","-jar","/eureka.jar"]
     depends_on:
       - "mongodb"
     image: eureka-service
@@ -17,19 +22,37 @@ services:
     hostname: Eureka
     ports: 
       - "8761:8761"
-    
-  
-  api:
-    container_name: api
-    build: ./PatientAPI
+      
+  patientrecords:
+    container_name: patientrecords
+    build: ./PatientRecords
+    command: ["./wait-for-it.sh", "-t", "0", "Eureka:8761", "--", "java","-Djava.security.egd=file:/dev/./urandom","-jar","/PatientRecords.jar"]
     depends_on:
       - "Eureka"
-    image: patientapi-service
+    image: patientrecords-service
     volumes:
-      - ./apigateway:/app
-    hostname: api
+      - ./patientrecords:/app
+    hostname: patientrecords
     links:
       - mongodb:mongodb
       - Eureka:Eureka
-    ports: 
-      - "12355:12355"
+    ports:
+      - "12349:12349"
+  
+#  api:
+#    container_name: api
+#    build: ./PatientAPI
+#    depends_on:
+#      - "Eureka"
+#    image: patientapi-service
+#    volumes:
+#      - ./apigateway:/app
+#    hostname: api
+#    links:
+#      - mongodb:mongodb
+#      - Eureka:Eureka
+#    ports: 
+#      - "12355:12355"
+
+volumes:
+  db-data:
