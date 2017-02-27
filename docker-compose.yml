@@ -22,7 +22,6 @@ services:
       
   patientrecords:
     container_name: patientrecords
-    build: ./PatientRecords
     depends_on:
       - "Eureka"
     image: patientrecords

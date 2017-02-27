@@ -25,7 +25,7 @@ eureka:
 
 spring:
   application:
-    name: cart
+    name: patient
   data:
     mongodb:
-host: mongodb
+      host: mongodb
